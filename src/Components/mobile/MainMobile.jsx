@@ -1,16 +1,7 @@
-import React, {useRef, useState} from 'react';
-import img from '../../img/logo.png'
+import React, { useState} from 'react';
 import classes from './mainStyle.module.css'
-import menu from '../../img/Menu.svg'
-import close from '../../img/close.svg'
-import facebook from '../../img/FacebookMobile.svg'
-import ig from '../../img/instagramMobile.svg'
-import wa from '../../img/WhatsappMobile.svg'
-import wc from '../../img/WechatMobile.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
-import LeftMenu from "./LeftMenu";
-import {Transition} from "react-transition-group";
+import {Link} from "react-router-dom";
 import Header from "./Header";
 
 
@@ -21,7 +12,6 @@ const currencies = [{name: 'USD', exchange: '80 руб.'},
     {name: 'RUB', exchange: ''}]
 
 const MainMobile = () => {
-    const hist = useNavigate();
     const dispatch = useDispatch();
     const road = useSelector(state => state.road);
     const saveRoad = () => {
@@ -32,7 +22,6 @@ const MainMobile = () => {
         dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money}})
         console.log(road);
     }
-    const refMenu = useRef();
     let [chinaTownsList, setChinaTown] = useState([]);
     let [russiaTownsList, setRussiaTown] = useState([])
     let [currencyList, setCurrencyList] = useState([])

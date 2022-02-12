@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import classes from './FeedbackForm.module.css';
-import StartPg from "../main/StartPg";
 import {useNavigate} from 'react-router-dom';
-import {Link} from "react-router-dom";
 
 
 const FeedbackForm = () => {
     const [noitem, setItem] = useState('')
-    const [go, setGo] = useState(false)
     const hist = useNavigate();
     function error() {
         let inputs = Array.from(document.getElementsByTagName('input')).filter(e => !e.value);
@@ -15,7 +12,7 @@ const FeedbackForm = () => {
             setItem(<div className={classes.err}>* Заполните поле {inputs[0].placeholder}.</div>)
         }else {
             setItem('');
-            document.getElementById('go').click();
+            hist('/sended');
         }
 
 
@@ -34,7 +31,6 @@ const FeedbackForm = () => {
                     <button onClick={error}>Связаться по доставке</button>
                 <p>Нажимая на кнопку, вы даете <a href='#' >согласие на обработку</a> своих персональных данных</p>
             </div>
-            <Link to='/sended'><div style={{display: 'none'}} id='go'></div></Link>
             <button onClick={()=>hist(-1)} className={classes.back}>&larr; Назад</button>
         </div>
     );

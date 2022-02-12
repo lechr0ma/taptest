@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import classes from './ItemsPage.module.css';
 import Item from "../static/Item";
@@ -41,7 +41,7 @@ const ItemsPage = () => {
     const setHint = (num) => {
         dispatch({type: 'SET_HINT', payload:num})
         }
-    function setOption(item, id) {
+    function setOption(currentItem, id) {
         let text = document.getElementById('search').value;
         if (text){
             setItemsList(itemsMass.filter(e => e.description.toUpperCase().includes(text)).map(element =>
@@ -55,11 +55,11 @@ const ItemsPage = () => {
         )}
         setOptions({
             show: true,
-            description: item.description,
-            image: item.image
+            description: currentItem.description,
+            image: currentItem.image
         });
         }
-        function resetItem() {
+    function resetItem() {
             setItemsList(itemsMass.map(element =>
                 <Item item={element} id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
             ))
