@@ -43,8 +43,11 @@ const ItemsPage = () => {
     function setOption(currentItem, id) {
         let text = document.getElementById('search').value;
         if (text){
-            setItemsList(itemsMass.filter(e => e.description.toUpperCase().includes(text)).map(element =>
-                <Item item={element} img={element.image} id={element.id} description={element.description} rem={setOption} showBtn={true} get={true}/>
+            let foundItems = itemsMass.filter(e => e.description.toUpperCase().includes(text));
+
+            setItemsList(foundItems.map(element => element.id == id ?
+                <Item item={element}  id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={true}/>
+                : <Item item={element}   id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
             ))
         }else{
             setItemsList(itemsMass.map(element => element.id == id ?
