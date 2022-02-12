@@ -96,7 +96,8 @@ const ItemsPage = () => {
                 description: ''
             }
         )
-        setNoItem(`Выбранных элементов ${selected.length + 1}, Вы можете добавить элемент или перейти к списку по ссылке вверху страницы`)
+        let text = <>Вы можете добавить элемент или перейти к списку по ссылке вверху страницы</>
+        setNoItem(text)
     }
     return (
         <div className={classes.container}>

@@ -93,7 +93,7 @@ const Header = () => {
                 {road}
             </div>
             <div>
-                <Link to='/basket'><button className={classes.items}>Выбранные товары({selected.length})</button></Link>
+                {selected.length > 0 && <Link to='/basket'><button className={classes.items}>Выбранные товары({selected.length})</button></Link>}
             </div>
             <Link to='/contacts'><button className='feedback'>Связаться</button></Link>
         </header>

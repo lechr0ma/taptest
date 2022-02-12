@@ -39,7 +39,7 @@
     justify-self: flex-start;
     border-right: 2px solid #E2E4EA;
 }
-.quantity, .netto, .brutto, .volume, .cost, .remove{
+.quantity, .netto,.netto__input, .brutto, .volume, .cost, .remove{
     position: relative;
     display: flex;
     justify-content: center;

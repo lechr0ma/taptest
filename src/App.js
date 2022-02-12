@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {
     Routes,
-    Route,
+    Route
 } from "react-router-dom";
 
 import MainPage from "./Components/pages/MainPage";
@@ -32,7 +32,7 @@ export {itemsMass};
 
 
 function App() {
-  return(
+    return(
       <div className='App'>
           <Routes>
               <Route path='/contacts' element={<ContactsPage/>}/>
