@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import cl from "./Itemlist.module.css";
-import img from "../../img/logo.png";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Header from "./Header";

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {itemsMass} from "../../App";
 import cl from "./Itemlist.module.css";
-import img from "../../img/logo.png";
 import {useDispatch} from "react-redux";
 import Header from "./Header";
 

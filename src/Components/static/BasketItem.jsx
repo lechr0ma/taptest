@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import classes from "./SelectedItems.module.css";
-import edit from '../../img/edit.svg'
 
 const BasketItem = ({item, rem, set}) => {
         const refNetto = useRef();
