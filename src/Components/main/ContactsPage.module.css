@@ -1,0 +1,48 @@
+.feedbackPage h1, .feedbackSended h1{
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 64px;
+    margin-left: 100px;
+    color: #606F7A;
+}
+.container{
+    display: flex;
+}
+.feedbackSended{
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    margin-left: 200px;
+
+}
+.feedbackSended p{
+    margin-left: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    color: #606F7A;
+}
+.btns{
+    margin-left: 100px;
+    display: flex;
+}
+.btns button{
+    font-size: 17px;
+    line-height: 17px;
+    color: #FFFFFF;
+    border: 0;
+    width: 260px;
+    height: 55px;
+    background: #5DAAFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+.btns button:hover{
+    background: #2876CC;
+}

@@ -1,0 +1,181 @@
+.road{
+    position: relative;
+}
+.roadBtn{
+    width: 260px;
+
+    display: block;
+    border: 0;
+    background: inherit;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 17px;
+    color: #606F7A;
+}
+.roadBtn_edit i{
+    margin: 10px 0;
+    height: 20px;
+    width: 1px;
+    background-color: #DEDEDE;
+}
+.roadBtn_active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 260px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 17px;
+    color: #606F7A;
+}
+.roadBtn_active button, .roadBtn_edit button{
+    border: 0;
+    height: 100%;
+    background: inherit;
+    border-radius: 5px;
+}
+.roadBtn_edit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 370px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 15px;
+    color: #606F7A;
+}
+.townsList{
+    position: absolute;
+    background: #FFFFFF;
+    top: 42px;
+    left: 0;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    width: 30%;
+}
+
+.townsList div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    color: #606F7A;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+}
+.townsList div:hover{
+    color: #FFFFFF;
+    background: #2876CC;
+    cursor: pointer;
+}
+.roadBtn_edit input, .roadBtn_edit select{
+    padding: 0;
+    text-align: center;
+    background: #FFFFFF;
+    height: 100%;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 10px;
+    color: #606F7A;
+}
+
+.items:hover{
+    opacity: 0.5;
+}
+
+.road.hidden{
+    display: none;
+}
+
+.items{
+    display: block;
+    border: 0;
+    background: inherit;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 17px;
+    color: #606F7A;
+}
+.roadEdit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 260px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 17px;
+    color: #606F7A;
+}
+.items.hidden{
+    display: none;
+}
+.hint{
+    position: absolute;
+    top: 100px;
+    left: 20%;
+    width: 700px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 23px;
+    color: #5DAAFF;
+}
+.hint button{
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background: #fff;
+    color: red;
+    width: 15px;
+    height: 15px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 17px;
+}
+.currencyEx, .cityChina, .cityRussia, .currency {
+    height: 100%;
+    width: 30%;
+    border: 0;
+    background: #FFFFFF;
+}

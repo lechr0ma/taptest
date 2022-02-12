@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+.App{ background: #E5E5E5;
+  width: 100%;
+  height: 100vh;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 100px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.start{
+  background: url("./img/background.png") no-repeat;
+  background-size: 110% 115%;
+  width: 100%;
+  height: 100vh;
 }
+.feedback{
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 172px;
+  height: 60px;
+  border: 0;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 40px rgba(46, 80, 87, 0.12);
+  border-radius: 3px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 17px;
+  color: #606F7A;
+  letter-spacing: .2px;
+}
+.feedback:hover{
+  background: #5DAAFF;
+  color: #FFFFFF
+}
+article{
   display: flex;
   flex-direction: column;
+  margin-left: 100px;
+}
+.mainText{
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 30px;
+  margin-top: 100px;
+  color: #606F7A;
+}
+.main__inputs i{
+  margin: 10px 0;
+  height: 65px;
+  width: 1px;
+  background-color: #DEDEDE;
+}
+.mainInputsRow, .upperText{
+  position: relative;
+  display: flex;
+  width: 50%;
+}
+.main__inputs{ position: relative;
+  display: flex;
+  background-color: #FFFFFF;
+}
+.upperText *{
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+  min-width: 160px;
+  padding-left: 10px;
+  letter-spacing: -1px;
+  color: #B7B7B7;
+}
+#cityChina{
+  text-align: center;
+  padding: 0 2px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.currencyEx, #cityChina, #cityRussia, #currency {
+  position: relative;
+  display: flex;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 160px;
+  height: 85px;
+  border: 0;
+  background: #FFFFFF;
+ color: #606F7A;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+}
+.go{
+  font-size: 17px;
+  line-height: 17px;
+  color: #FFFFFF;
+  margin-left: 10px;
+  border: 0;
+  width: 200px;
+  height: 100%;
+  background: #5DAAFF;
+  box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+  border-radius: 3px;
+}
+.go:hover{
+  background: #2876CC;
+}
+.select__pop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 15px;
+  color: #5DAAFF;
+  bottom: -70px;
+  position: absolute;
+  width: 60%;
+  height: 55px;
+  background: #FFFFFF;
+  border-radius: 3px;
 }
 
-.App-link {
-  color: #61dafb;
+.go__pop{
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 15px;
+  color: #5DAAFF;
+  top: -50px;
+  right: 20px;
+  position: absolute;
+  width: 35%;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 3px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.go__pop.active{
+  display: flex;
+}
+.total {
+  background: #E5E5E5;
+}
+.townsList{
+  position: absolute;
+  top: 85px;
+  background: #FFFFFF;
+  width: 25%;
+  border: 1px solid #606F7A;
+  border-radius: 5px;
+}
+.townsList div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: #606F7A;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+}
+.townsList div:hover{
+  color: #FFFFFF;
+  background: #2876CC;
+  cursor: pointer;
+}
+#cityRussia{
+  size: 60px;
 }

@@ -1,0 +1,12 @@
+.exited{
+    left: -100%
+}
+.exiting{
+    left: -100%
+}
+.entered{
+    left: 0;
+}
+.entering{
+    left: 0;
+}

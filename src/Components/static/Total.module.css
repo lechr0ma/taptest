@@ -1,0 +1,127 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 100px;
+    margin-left: 100px;
+
+}
+.blue__btn{
+    font-size: 17px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-left: 10px;
+    border: 0;
+    width: 200px;
+    height: 55px;
+    background: #5DAAFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+    border-radius: 3px;
+}
+.blue__btn:hover{
+    background: #2876CC;
+}
+.tableOptions{
+    display: flex;
+    align-self: flex-end;
+    width: 70%;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.tableOptions div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8FAFF;
+    border-right: 2px solid #E2E4EA;
+    width: 18%;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    color: #606F7A;
+
+}
+.itemButtons{
+    width: 420px;
+}
+.totalCost{
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.totalCost p{
+    width: 49%;
+    text-align: right;
+    font-family: "Open Sans",serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 23px;
+
+    letter-spacing: .2px;
+
+    color: #606F7A;
+}
+.hint{
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 500px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 23px;
+    color: #5DAAFF;
+}
+.hint button{
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background: #fff;
+    color: red;
+    width: 15px;
+    height: 15px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 17px;
+}
+.totalButtons{
+    margin-bottom: 100px;
+    position: relative;
+}
+.white__btn{
+    width: 400px;
+    height: 55px;
+    border: 1.5px solid #5DAAFF;
+    background: inherit;
+    box-shadow: 0px 4px 40px rgba(46, 80, 87, 0.12);
+    border-radius: 3px;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 17px;
+    color: #5DAAFF;
+    letter-spacing: .2px;
+}
+.white__btn:hover{
+    background: #5DAAFF;
+    color: #FFFFFF
+}
