@@ -1,6 +1,5 @@
 import React from 'react';
 import img from "../../img/logo.png";
-import item from "../../img/item.png";
 import {useNavigate} from "react-router-dom";
 
 const ItemMobile = (props) => {

@@ -20,7 +20,7 @@ header{
   height: 60px;
   border: 0;
   background: #FFFFFF;
-  box-shadow: 0px 4px 40px rgba(46, 80, 87, 0.12);
+  box-shadow: 0 4px 40px rgba(46, 80, 87, 0.12);
   border-radius: 3px;
   font-family: "Open Sans", sans-serif;
   font-style: normal;
@@ -105,7 +105,7 @@ article{
   width: 200px;
   height: 100%;
   background: #5DAAFF;
-  box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+  box-shadow: 0 4px 40px rgba(93, 170, 255, 0.29);
   border-radius: 3px;
 }
 .go:hover{
@@ -130,6 +130,7 @@ article{
 }
 
 .go__pop{
+  display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Open Sans", serif;

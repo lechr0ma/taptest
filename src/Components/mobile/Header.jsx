@@ -14,17 +14,48 @@ const Header = (props) => {
     const road = useSelector(state => state.road);
     function trigMenu() {
         setShow(false);
-        console.log(show);
     }
     const hist = useNavigate();
     return (
         <div className={classes.header}>
-            {props.logo && <img src={img} alt='logo'/>}
-            {props.goback && <button onClick={()=>hist(-1)}><img src={back} alt="Back"/></button>}
-            {props.search && <input placeholder='Поиск....' onChange={event => props.filter(event.target.value)} className={cl.search} type="text"/>}
-            {props.road && <button className={classes.road} onClick={() => hist('/')}><p>{road.from}&larr;{road.to}, {road.money}</p></button>}
-            <button onClick={()=>setShow(true)}><img src={menu} alt='menu'/></button>
-            <LeftMenu show={show} rem={trigMenu}/>
+            {props.logo && <img
+                src={img}
+                alt='logo'
+            />}
+            {props.goback && <button
+                onClick={()=>hist(-1)}
+            >
+                <img
+                    src={back}
+                    alt="Back"
+                />
+            </button>}
+            {props.search && <input
+                placeholder='Поиск....'
+                onChange={event => props.filter(event.target.value)}
+                className={cl.search}
+                type="text"
+            />
+            }
+            {props.road && <button
+                className={classes.road}
+                onClick={() => hist('/')}
+            >
+                <p>{road.from}&larr;{road.to}, {road.money}</p>
+            </button>
+            }
+            <button
+                onClick={()=>setShow(true)}
+            >
+                <img
+                    src={menu}
+                    alt='menu'
+                />
+            </button>
+            <LeftMenu
+                show={show}
+                rem={trigMenu}
+            />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {itemsMass} from "../../App";
 import cl from "./Itemlist.module.css";

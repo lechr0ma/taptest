@@ -40,6 +40,8 @@ const reducer = (state = defaultState, action) =>{
                     brutto: action.payload.value.brutto,
                     volume: action.payload.value.volume,
                     cost: action.payload.value.cost} : e )}
+        case 'RESET_SELECTED':
+            return {...state, selected: []}
         default:
             return state;
     }
@@ -49,7 +51,7 @@ let isMobile = false;
 for (let i = 0; i < mobileAgent.length; i++){
     if(navigator.userAgent.includes(mobileAgent[i]) && window.innerWidth < 1200){
         isMobile = true;
-    };
+    }
 }
 console.log(isMobile);
 window.addEventListener('resize', ()=> console.log(window.innerWidth));

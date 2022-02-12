@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from "./mainStyle.module.css";
 import img from "../../img/logo.png";
 import close from "../../img/close.svg";

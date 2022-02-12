@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './SelectedItems.module.css';
 import BasketItem from "./BasketItem";
 import {useDispatch, useSelector} from "react-redux";
@@ -18,7 +18,7 @@ const SelectedItems = () => {
     return (
         <div className={classes.container}>
             {selected.map(element =>
-            <BasketItem item={element} rem={removeItem} set={set} />)}
+            <BasketItem key={element.key} item={element} rem={removeItem} set={set} />)}
         </div>
     );
 };

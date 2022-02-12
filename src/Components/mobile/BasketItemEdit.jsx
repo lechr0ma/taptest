@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import cl from "./Itemlist.module.css";
 import img from "../../img/logo.png";
-import back from "../../img/Back.svg";
-import menu from "../../img/Menu.svg";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Header from "./Header";

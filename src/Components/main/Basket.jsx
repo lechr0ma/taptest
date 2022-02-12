@@ -1,23 +1,25 @@
 import React from 'react';
 import classes from './Basket.module.css';
 import SelectedItems from "../static/SelectedItems";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import Hint from "../static/Hint";
 
 const Basket = () => {
-    const selected =useSelector(state => state.selected);
+    const selected = useSelector(state => state.selected);
     const hints = useSelector(state => state.hints);
-    const dispatch = useDispatch();
-    function setHint() {
-        dispatch({type:'SET_HINT', payload: 3})
-    }
+
     return (
         <div className={classes.container}>
             <div className={classes.title}>
                 <h1>Добавленная мебель ({selected.length})</h1>
-                {hints[3] && <div className={classes.hint}>
-                    <button className={classes.redCross} onClick={setHint}>&#215;</button>
-                    <p>Чтобы отредактировать  введенные ланные, просто нажмите на поле</p>
-                </div>}
+                {hints[3] && <Hint
+                            body='Чтобы отредактировать  введенные ланные, просто нажмите на поле'
+                            num={3}
+                            style={{width: 600,
+                                height: 40,
+                                left: 550}}
+                />
+                }
             </div>
             <div className={classes.table}>
                 <div className={classes.tableOptions}>

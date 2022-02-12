@@ -38,7 +38,7 @@ const MainForm = () => {
         let text = event.target.value.toUpperCase();
         setHint('fill');
         if (text){
-            setTown(chinaTowns.filter(e => !e.toUpperCase().indexOf(text)).map(e => <div onClick={setTownList}>{e}</div>))
+            setTown(chinaTowns.filter(e => !e.toUpperCase().indexOf(text)).map((e, index) => <div key={index} onClick={setTownList}>{e}</div>))
             console.log(chinaTowns)
         } else {
             setTown([]);
@@ -65,9 +65,9 @@ const MainForm = () => {
                     <div className='main__inputs'>
                         <input autoComplete='off' placeholder={road.from} id='cityChina' onChange={getText}/>
                         <i/>
-                        <select id='cityRussia'>{russiaTowns.map(element => <option>{element}</option>)}</select>
+                        <select id='cityRussia'>{russiaTowns.map((element, index) => <option key={index}>{element}</option>)}</select>
                         <i/>
-                        <select ref={refCurrency} onChange={changeCurrency} id='currency'>{currencies.map(e => <option>{e.name}</option>)}</select>
+                        <select ref={refCurrency} onChange={changeCurrency} id='currency'>{currencies.map(e => <option key={e.name}>{e.name}</option>)}</select>
                         <i/>
                         <div className="currencyEx">{exchange}</div>
                         { hint === 'fill' &&

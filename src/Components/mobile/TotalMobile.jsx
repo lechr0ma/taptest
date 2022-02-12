@@ -1,7 +1,4 @@
 import React from 'react';
-import cl from "./Itemlist.module.css";
-import back from "../../img/Back.svg";
-import menu from "../../img/Menu.svg";
 import classes from './TotalMobile.module.css'
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";

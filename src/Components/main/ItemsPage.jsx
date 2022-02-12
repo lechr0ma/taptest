@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
 import classes from './ItemsPage.module.css';
 import Item from "../static/Item";
 import {useDispatch, useSelector} from "react-redux";
 import {itemsMass} from "../../App";
+import Hint from "../static/Hint";
 
 const ItemsPage = () => {
     let hint;
+    const selected = useSelector(state => state.selected)
     const hintShow = useSelector(state => state.hints);
     const dispatch = useDispatch();
     const [options, setOptions] = useState({
@@ -14,6 +15,7 @@ const ItemsPage = () => {
         image: '',
         description: ''
     });
+    const [noItem, setNoItem] = useState('Вы пока не выбрали ни одного элемента.')
     const [item, setItem] = useState({
         quantity: 1,
         volume:'',
@@ -38,9 +40,6 @@ const ItemsPage = () => {
                 </div>;
         }
 
-    const setHint = (num) => {
-        dispatch({type: 'SET_HINT', payload:num})
-        }
     function setOption(currentItem, id) {
         let text = document.getElementById('search').value;
         if (text){
@@ -81,6 +80,23 @@ const ItemsPage = () => {
                     cost: item.cost
                 }
             })
+        setItem({
+                quantity: 1,
+                volume:'',
+                netto:'',
+                brutto:'',
+                cost:'',
+
+            }
+        )
+
+        setOptions({
+                show: false,
+                image: '',
+                description: ''
+            }
+        )
+        setNoItem(`Выбранных элементов ${selected.length + 1}, Вы можете добавить элемент или перейти к списку по ссылке вверху страницы`)
     }
     return (
         <div className={classes.container}>
@@ -99,16 +115,21 @@ const ItemsPage = () => {
             </div>
             <div className={classes.itemOption}>
                 <h2>Затем заполните следующие поля выбранного элемента:</h2>
-                { !options.show ?
-                    <div className={classes.noItems}>Вы пока не выбрали ни одного элемента.</div>
+                { !options.show  ?
+                    <div className={classes.noItems}>{noItem}</div>
                     :
                     <div className={classes.item__options}>
                     <div className={classes.currentItem}>
-                        {hintShow[1] && <div className={classes.hint__item}>
-                            <p>Теперь заполните поля для этого элемента
-                                &#8595;</p>
-                            <button onClick={()=>setHint(1)}>&#215;</button>
-                        </div>}
+                        {hintShow[1] && <Hint
+                            body='Теперь заполните поля для этого элемента
+                                &#8595;'
+                            num={1}
+                            style={{
+                                top: -70,
+                                width: 400,
+                                height: 55,
+                            }}/>
+                        }
                     <Item img={options.image} description={options.description} showBtn={false}/>
                     </div>
                     <div className={classes.quantity}>
@@ -123,13 +144,18 @@ const ItemsPage = () => {
                     <input value={item.netto} type="number" onChange={event => setItem({...item, netto: event.target.value})} placeholder="Масса Нетто, кг"/>
                     <input value={item.brutto} type="number" onChange={event => setItem({...item, brutto: event.target.value})} placeholder="Масса Брутто, кг"/>
                     <input value={item.cost} type="number" onChange={event => setItem({...item, cost: event.target.value})} placeholder="Стоимость в выбранной валюте"/>
+                        {hintShow[2] && <Hint
+                            body='Здесь вы можете сбросить параметры и добавить элемент
+                                &#10230;'
+                            num={2}
+                            style={{
+                                bottom: 10,
+                                width: 580,
+                                left: -650,
+                                height: 55,
+                            }}/>
+                        }
                     <div className={classes.optionBtns}>
-                        {hintShow[2] &&  <div className={classes.hint__reset}>
-                            <button onClick={() => setHint(2)}>&#215;</button>
-                            <p>Здесь вы можете сбросить параметры и добавить элемент
-                                &#10230;</p>
-
-                        </div>}
                         <button onClick={()=>setItem({
                             quantity: 1,
                             volume:'',
@@ -138,7 +164,7 @@ const ItemsPage = () => {
                             cost:'',
                         })}>Сбросить</button>
                         {item.netto && item.brutto && item.cost && item.volume ?
-                            <Link to='/basket'><button onClick={addItem}>Добавить</button></Link>
+                            <button onClick={addItem}>Добавить</button>
                             :
                             <button style={{backgroundColor: 'teal'}}>Заполните поля</button>
                         }

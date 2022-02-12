@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useNavigate} from "react-router-dom";
 import classes from './BasketMobile.module.css';
 import noitem from '../../img/noitem.svg'
-import menu from "../../img/Menu.svg";
 import {useSelector} from "react-redux";
 import BasketItemMobile from "./BasketItemMobile";
 import Header from "./Header";
@@ -16,7 +15,7 @@ const BasketMobile = () => {
             <div className={classes.title}>Выбранная мебель ({selected.length})</div>
             {selected.length > 0 ?
                 <div className={classes.itemsList}>
-                    {selected.map(element => <BasketItemMobile item={element}/>)}
+                    {selected.map(element => <BasketItemMobile key={element.key} item={element}/>)}
                 </div>
 
                 :
