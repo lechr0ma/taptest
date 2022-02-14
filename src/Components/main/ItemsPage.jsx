@@ -7,8 +7,8 @@ import Hint from "../static/Hint";
 
 const ItemsPage = () => {
     let hint;
-    const selected = useSelector(state => state.selected)
     const hintShow = useSelector(state => state.hints);
+    const road = useSelector(state => state.road)
     const dispatch = useDispatch();
     const [options, setOptions] = useState({
         show: false,
@@ -22,7 +22,6 @@ const ItemsPage = () => {
         netto:'',
         brutto:'',
         cost:'',
-
     })
     const [itemsList, setItemsList] = useState(itemsMass.map(element =>
         <Item item={element} id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
@@ -60,6 +59,14 @@ const ItemsPage = () => {
             description: currentItem.description,
             image: currentItem.image
         });
+        setItem({
+                quantity: 1,
+                volume:'',
+                netto:'',
+                brutto:'',
+                cost:''
+            }
+        )
         }
     function resetItem() {
             setItemsList(itemsMass.map(element =>
@@ -80,7 +87,8 @@ const ItemsPage = () => {
                     netto: item.netto,
                     brutto: item.brutto,
                     volume: item.volume,
-                    cost: item.cost
+                    cost: item.cost,
+                    multiply: road.multiply
                 }
             })
         setItem({
@@ -89,7 +97,6 @@ const ItemsPage = () => {
                 netto:'',
                 brutto:'',
                 cost:'',
-
             }
         )
 
@@ -99,7 +106,7 @@ const ItemsPage = () => {
                 description: ''
             }
         )
-        let text = <>Вы можете добавить элемент или перейти к списку по ссылке вверху страницы</>
+        let text = <>Вы можете добавить еще элемент или перейти к списку по ссылке вверху страницы</>
         setNoItem(text)
     }
     return (
@@ -130,7 +137,7 @@ const ItemsPage = () => {
                             num={1}
                             style={{
                                 top: -70,
-                                width: 400,
+                                width: 430,
                                 height: 55,
                             }}/>
                         }
@@ -139,15 +146,15 @@ const ItemsPage = () => {
                     <div className={classes.quantity}>
                         <p>Кол-во:</p>
                         <div className={classes.quantity__counter}>
-                            <button onClick={()=> {if (item.quantity !==1){setItem({...item, quantity: item.quantity -= 1})}}}>&#8722;</button>
+                            <button onClick={()=> {if (item.quantity !==1){setItem({...item, quantity: item.quantity - 1})}}}>&#8722;</button>
                             <div><h2>{item.quantity}</h2></div>
-                            <button onClick={()=> setItem({...item, quantity: item.quantity += 1})}>&#43;</button>
+                            <button onClick={()=> setItem({...item, quantity: item.quantity + 1})}>&#43;</button>
                         </div>
                     </div>
-                    <input value={item.volume} type="number" onChange={event => setItem({...item, volume:event.target.value})} placeholder="Объем, м3"/>
-                    <input value={item.netto} type="number" onChange={event => setItem({...item, netto: event.target.value})} placeholder="Масса Нетто, кг"/>
-                    <input value={item.brutto} type="number" onChange={event => setItem({...item, brutto: event.target.value})} placeholder="Масса Брутто, кг"/>
-                    <input value={item.cost} type="number" onChange={event => setItem({...item, cost: event.target.value})} placeholder="Стоимость в выбранной валюте"/>
+                    <input value={item.volume} type="number" min={1} onChange={event => setItem({...item, volume: event.target.value})} placeholder="Объем, м3"/>
+                    <input value={item.netto} type="number" min={1} onChange={event => setItem({...item, netto: event.target.value})} placeholder="Масса Нетто, кг"/>
+                    <input value={item.brutto} type="number" min={1} onChange={event => setItem({...item, brutto: event.target.value})} placeholder="Масса Брутто, кг"/>
+                    <input value={item.cost} type="number" min={1} onChange={event => setItem({...item, cost: event.target.value})} placeholder="Стоимость в выбранной валюте"/>
                         {hintShow[2] && <Hint
                             body='Здесь вы можете сбросить параметры и добавить элемент
                                 &#10230;'
@@ -167,7 +174,7 @@ const ItemsPage = () => {
                             brutto:'',
                             cost:'',
                         })}>Сбросить</button>
-                        {item.netto && item.brutto && item.cost && item.volume ?
+                        {+item.netto && +item.brutto && +item.cost && +item.volume ?
                             <button onClick={addItem}>Добавить</button>
                             :
                             <button style={{backgroundColor: 'teal'}}>Заполните поля</button>

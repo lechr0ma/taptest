@@ -1,18 +1,22 @@
 .App{ background: #E5E5E5;
-  width: 100%;
+  min-width: 100vh;
   height: 100vh;
+  min-height: 900px;
+  overflow: auto;
 }
 header{
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 100px;
+  position: relative;
 }
 .start{
   background: url("./img/background.png") no-repeat;
   background-size: 110% 115%;
   width: 100%;
   height: 100vh;
+  min-height: inherit;
 }
 .feedback{
 
@@ -57,7 +61,7 @@ article{
 .mainInputsRow, .upperText{
   position: relative;
   display: flex;
-  width: 50%;
+  min-width: 50%;
 }
 .main__inputs{ position: relative;
   display: flex;
@@ -140,9 +144,9 @@ article{
   line-height: 15px;
   color: #5DAAFF;
   top: -50px;
-  right: 20px;
+  left: 500px;
   position: absolute;
-  width: 35%;
+  width: 300px;
   height: 40px;
   background: #FFFFFF;
   border-radius: 3px;

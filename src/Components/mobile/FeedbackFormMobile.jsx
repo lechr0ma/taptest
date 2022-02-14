@@ -12,7 +12,9 @@ const FeedbackFormMobile = () => {
         email:''
     }) ;
     function getHint() {
-        inputs.name.trim() && !/[0-9]/.test(inputs.name)  ? inputs.tel.trim().length > 7 ? inputs.email.trim().includes('@') ? hist('/sended') : setHint('email')
+        let name = inputs.name.replace(/\p{Alpha}\p{Pc}/gu, '')
+        console.log(name)
+        !name ? inputs.tel.trim().length > 7 ? inputs.email.trim().includes('@') ? hist('/sended') : setHint('email')
             : setHint('Телефон')
             : setHint('Имя')
     }

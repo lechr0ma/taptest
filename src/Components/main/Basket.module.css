@@ -33,6 +33,7 @@
 .title{
     display: flex;
     align-items: center;
+    position: relative;
 
 }
 .title h1{

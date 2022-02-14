@@ -10,7 +10,7 @@ import MobileApp from "./Components/mobile/MobileApp";
 const mobileAgent = ['Android', 'iPhone', 'iPad', 'iPod']
 
 const defaultState = {
-        road: {from:'', to:'', money: ''},
+        road: {from:'', to:'', money: '', exchange:'', multiply: 1},
         selected: [],
         hints: [true, true, true, true, true, true, true]
         // hints: {
@@ -26,7 +26,7 @@ const defaultState = {
 const reducer = (state = defaultState, action) =>{
     switch (action.type) {
         case 'ADD_ROAD':
-            return {...state, road: {from: action.payload.from, to: action.payload.to, money: action.payload.money}};
+            return {...state, road: {from: action.payload.from, to: action.payload.to, money: action.payload.money, multiply: action.payload.multiply}};
         case 'SET_HINT':
             return {...state, hints: state.hints.map((item, index) => index == action.payload ? !item : item)};
         case 'ADD_ITEM':

@@ -2,17 +2,18 @@ import React, {useRef, useState} from 'react';
 import classes from "./SelectedItems.module.css";
 
 const BasketItem = ({item, rem, set}) => {
+
         const refNetto = useRef();
         const refBrutto = useRef();
         const refVolume = useRef();
         const refCost = useRef();
         const refQuantity = useRef();
         const [editNetto, setNetto] = useState('show');
-        let mem;
+        let mem = [];
         function editItem(event) {
             let text = event.target.innerText;
-            if (text.replace(/\d/g,'').length > 0){
-                event.target.innerText = mem;
+            if (!text || text.replace(/[1-9]/g,'').length > 0){
+                event.target.innerText = mem[0];
                 alert('Ввести можно только цифры');
             }else {
             let props  = {
@@ -23,14 +24,16 @@ const BasketItem = ({item, rem, set}) => {
                 cost: +refCost.current.innerText
             }
             set(item, props);
+            mem = [];
+            console.log(mem)
         }}
         function setMem(e){
-            mem = e.target.innerText;
-            console.log(mem)
+            mem.push(e.target.innerText);
+            console.log(mem[0])
         }
         function setInput(e) {
-                let text = prompt('Введите значение', e.target.innerText);
-            if (text.replace(/\d/g,'').length == 0){
+                let text = prompt('Введите значение больше нуля', e.target.innerText);
+            if (text.replace(/[1-9]/g,'').length === 0 && text){
                 e.target.innerText = text;
                 let props  = {
                     quantity: +refQuantity.current.innerText,
@@ -41,21 +44,26 @@ const BasketItem = ({item, rem, set}) => {
                 }
                 set(item, props);
             }else{
-                alert('Только цифры');
+                alert('Только цифры больше нуля');
             }
         }
         function getNetto() {
             let text = document.getElementById('netto').value;
-            let props  = {
-                quantity: +refQuantity.current.innerText,
-                volume: +refVolume.current.innerText,
-                netto: text,
-                brutto: +refBrutto.current.innerText,
-                cost: +refCost.current.innerText
+
+            if (text.replace(/[1-9]/g,'').length === 0 && text){
+                let props  = {
+                    quantity: +refQuantity.current.innerText,
+                    volume: +refVolume.current.innerText,
+                    netto: +text,
+                    brutto: +refBrutto.current.innerText,
+                    cost: +refCost.current.innerText
+                }
+                set(item, props);
+                setNetto('show');
+            }else{
+                alert('Только цифры больше нуля');
             }
-            set(item, props);
-            setNetto('show');
-            console.log(editNetto)
+
         }
     return (
         <div className={classes.item}>

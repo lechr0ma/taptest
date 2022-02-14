@@ -7,6 +7,7 @@ import Hint from "../static/Hint";
 const Basket = () => {
     const selected = useSelector(state => state.selected);
     const hints = useSelector(state => state.hints);
+    const road = useSelector(state => state.road);
 
     return (
         <div className={classes.container}>
@@ -27,7 +28,7 @@ const Basket = () => {
                     <div>Общая масса нетто, кг</div>
                     <div>Общая масса брутто, кг</div>
                     <div>Общий объем, м3</div>
-                    <div>Стоимость единицы</div>
+                    <div>Стоимость единицы, {road.money}</div>
                     <div>Удалить</div>
                 </div>
                 <SelectedItems/>

@@ -6,12 +6,8 @@ import okImg from '../../img/ok.svg';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Hint from "../static/Hint";
+import {chinaTowns, russiaTowns, currencies} from "../forms/MainForm";
 
-const chinaTowns = ['Чунцин', 'wwwwwww', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
-const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
-const currencies = [{name: 'USD', exchange: '80 руб.'},
-    {name: 'CNY', exchange: '12 руб'},
-    {name: 'RUB', exchange: ''}]
 
 
 const Header = () => {
@@ -39,7 +35,8 @@ const Header = () => {
         let from = document.getElementById('navcityChina').value;
         let to = document.getElementById('navcityRussia').value;
         let money = document.getElementById('navcurrency').value;
-        dispatch({type: 'ADD_ROAD', payload:{from:from, to:to, money:money}})
+        let multiply = currencies.filter(e=> e.name === money)[0].multiply;
+        dispatch({type: 'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
         setEdit('string');
     }
     let road;

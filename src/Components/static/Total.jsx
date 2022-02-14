@@ -16,7 +16,7 @@ const Total = () => {
     items.forEach((e) => netto += +e.netto);
     items.forEach((e) => brutto += +e.brutto);
     items.forEach((e) => volume += +e.volume);
-    items.forEach((e) => cost += +e.cost);
+    items.forEach((e) => cost += +e.cost * +e.quantity * e.multiply);
 
     const hints = useSelector(state => state.hints);
     const dispatch = useDispatch();
@@ -39,11 +39,11 @@ const Total = () => {
         <div className={classes.container}>
             <div className={classes.tableOptions}>
                 <div className={classes.title}>Итого:</div>
-                <div>{quantity}</div>
-                <div>{netto}</div>
-                <div>{brutto}</div>
-                <div>{volume}</div>
-                <div>{cost}</div>
+                <div>{quantity} шт.</div>
+                <div>{netto} кг. нетто</div>
+                <div>{brutto} кг. брутто</div>
+                <div>{volume} м3</div>
+                <div>{cost} руб.</div>
                 <div onClick={resetSelected}>Очистить</div>
             </div>
             <div className={classes.itemButtons}>
@@ -52,11 +52,11 @@ const Total = () => {
             </div>
             <div className={classes.totalCost}>
                 <p>Стоимость доставки:</p>
-                <p>10000000руб</p>
+                <p>{1000 * volume} руб.</p>
                 <p>Таможенные платежи:</p>
-                <p>5000000руб</p>
+                <p>{cost*0.01} руб</p>
                 <p>Итого:</p>
-                <p>50000000</p>
+                <p>{cost*1.01 + 1000*volume} руб.</p>
             </div>
             <div className={classes.totalButtons}>
                 {hints[6] && <Hint

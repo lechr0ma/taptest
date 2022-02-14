@@ -2,11 +2,11 @@ import React, {useState, useRef} from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-const chinaTowns = ['Чунцин', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
-const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
-const currencies = [{name: 'USD', exchange: '80 руб.'},
-                    {name: 'CNY', exchange: '12 руб'},
-                    {name: 'RUB', exchange: ''}]
+export const chinaTowns = ['Чунцин', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
+export const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
+export const currencies = [{name: 'USD', exchange: '80 руб.', multiply: 80},
+                    {name: 'CNY', exchange: '12 руб.', multiply: 12},
+                    {name: 'RUB', exchange: '', multiply: 1}]
 
 const MainForm = () => {
 
@@ -16,8 +16,9 @@ const MainForm = () => {
         let from = document.getElementById('cityChina').value;
         let to = document.getElementById('cityRussia').value;
         let money = document.getElementById('currency').value;
-
-        dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money}})
+        let multiply = currencies.filter(e=> e.name === money)[0].multiply;
+        console.log(multiply);
+        dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
         console.log(road);
     }
 
