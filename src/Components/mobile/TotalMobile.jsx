@@ -31,7 +31,7 @@ const TotalMobile = () => {
                 <div><p>Общая стоимость, руб. </p><p>{options.cost}</p></div>
             </div>
             <div className={classes.fees}>
-                <div><p>Стоимость доставки</p><p>{1000*options.volume} руб.</p></div>
+                <div><p>Стоимость доставки</p><p>{100*options.volume} руб.</p></div>
                 <div><p>Таможенные платежи</p><p>{options.cost/20} руб.</p></div>
 
             </div>

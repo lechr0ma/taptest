@@ -6,13 +6,13 @@ import {useNavigate} from "react-router-dom";
 const FeedbackFormMobile = () => {
     const hist = useNavigate();
     const [hint, setHint] = useState('');
-    let [inputs, setInputs] = useState({
-        name: '',
+    const [inputs, setInputs] = useState({
+        name:'',
         tel:'',
         email:''
     }) ;
     function getHint() {
-        let name = inputs.name.replace(/\p{Alpha}\p{Pc}/gu, '')
+        let name = inputs.name.replace(/[\p{Alpha}\p{Pc}]/gu, '')
         console.log(name)
         !name ? inputs.tel.trim().length > 7 ? inputs.email.trim().includes('@') ? hist('/sended') : setHint('email')
             : setHint('Телефон')
