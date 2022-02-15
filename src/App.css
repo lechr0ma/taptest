@@ -1,4 +1,4 @@
-.App{ background: #E5E5E5;
+.App{ background: #EFF3F9;
   min-width: 100vh;
   height: 100vh;
   min-height: 900px;
@@ -8,7 +8,7 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 100px;
+  padding: 50px 100px;
   position: relative;
 }
 .start{
@@ -83,6 +83,9 @@ article{
   border-bottom-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+#cityChina:focus{
+  outline: none;
+}
 .currencyEx, #cityChina, #cityRussia, #currency {
   position: relative;
   display: flex;
@@ -99,6 +102,15 @@ article{
   font-weight: 500;
   font-size: 15px;
   line-height: 15px;
+}
+.currencyEx{
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: .2px;
+  color: #B7B7B7;
 }
 .go{
   font-size: 17px;
@@ -117,7 +129,7 @@ article{
 }
 .select__pop{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-family: "Open Sans", serif;
   font-style: normal;
@@ -127,7 +139,7 @@ article{
   color: #5DAAFF;
   bottom: -70px;
   position: absolute;
-  width: 60%;
+  width: 350px;
   height: 55px;
   background: #FFFFFF;
   border-radius: 3px;
@@ -135,7 +147,7 @@ article{
 
 .go__pop{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-family: "Open Sans", serif;
   font-style: normal;
@@ -143,12 +155,13 @@ article{
   font-size: 15px;
   line-height: 15px;
   color: #5DAAFF;
-  top: -50px;
+  top: -70px;
   left: 500px;
   position: absolute;
-  width: 300px;
-  height: 40px;
+  width: 350px;
+  height: 55px;
   background: #FFFFFF;
+  padding: 0 10px;
   border-radius: 3px;
 }
 .go__pop.active{
@@ -162,20 +175,22 @@ article{
   top: 85px;
   background: #FFFFFF;
   width: 25%;
-  border: 1px solid #606F7A;
   border-radius: 5px;
+  overflow: auto;
+  max-height: 140px;
 }
 .townsList div{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 70px;
   color: #606F7A;
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
   line-height: 15px;
+  border-top: 1px solid #EBEBEB;
 }
 .townsList div:hover{
   color: #FFFFFF;

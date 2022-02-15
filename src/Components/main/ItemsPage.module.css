@@ -64,7 +64,7 @@
 }
 .hint{
     position: absolute;
-    right: -500px;
+    right: -300px;
     top: -10px;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .hint p{
-    width: 90%;
+    width: 80%;
 }
 .itemsList__list{
     width: 95%;

@@ -4,12 +4,26 @@ import Item from "../static/Item";
 import {useDispatch, useSelector} from "react-redux";
 import {itemsMass} from "../../App";
 import Hint from "../static/Hint";
+import {filteredItems, filteredAndChosen} from "../../logic/itemspage";
+import larr from '../../img/leftarr.svg'
 
 const ItemsPage = () => {
-    let hint;
+
     const hintShow = useSelector(state => state.hints);
     const road = useSelector(state => state.road)
     const dispatch = useDispatch();
+    const initialList = itemsMass.map(element =>
+        <Item
+            key={element.id}
+            item={element}
+            id={element.id}
+            img={element.image}
+            description={element.description}
+            rem={setOption}
+            showBtn={true}
+            get={false}
+        />
+    )
     const [options, setOptions] = useState({
         show: false,
         image: '',
@@ -23,60 +37,34 @@ const ItemsPage = () => {
         brutto:'',
         cost:'',
     })
-    const [itemsList, setItemsList] = useState(itemsMass.map(element =>
-        <Item item={element} id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
-        ))
+
+    const [itemsList, setItemsList] = useState(initialList)
+    let hint = options.show
+        ?
+        ''
+        :
+        <div className={classes.hint}>
+            <img src={larr} alt="arrow"/>
+            <p>Введите название мебели в строку поиска или выберите мебель из предложенного списка</p>
+        </div>;
+
     function filterItems() {
         let text = document.getElementById('search').value
-        setItemsList(itemsMass.filter(e => e.description.toUpperCase().includes(text)).map(element =>
-            <Item item={element} id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true}/>
-            ))
-        }
-    if (!options.show){
-        hint = <div className={classes.hint}>
-                    <h1>&larr;</h1>
-                    <p>Введите название мебели в строку поиска или выберите мебель из предложенного списка</p>
-                </div>;
+        return filteredItems(text, setItemsList, itemsMass, setOption)
         }
 
-    function setOption(currentItem, id) {
-        let text = document.getElementById('search').value;
-        if (text){
-            let foundItems = itemsMass.filter(e => e.description.toUpperCase().includes(text));
+    function setOption(currentitem, id) {
+        let text = document.getElementById('search').value
+        return filteredAndChosen(text, setItemsList, setItem, setOptions, currentitem, id, itemsMass, setOption)
+    }
 
-            setItemsList(foundItems.map(element => element.id == id ?
-                <Item item={element}  id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={true}/>
-                : <Item item={element}   id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
-            ))
-        }else{
-            setItemsList(itemsMass.map(element => element.id == id ?
-                <Item item={element}  id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={true}/>
-                : <Item item={element}   id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
-            )
-        )}
-        setOptions({
-            show: true,
-            description: currentItem.description,
-            image: currentItem.image
-        });
-        setItem({
-                quantity: 1,
-                volume:'',
-                netto:'',
-                brutto:'',
-                cost:''
-            }
-        )
-        }
     function resetItem() {
-            setItemsList(itemsMass.map(element =>
-                <Item item={element} id={element.id} img={element.image} description={element.description} rem={setOption} showBtn={true} get={false}/>
-            ))
-            setOptions({...options,
+            setItemsList(initialList)
+            setOptions({
+                ...options,
                 show: false
             })
-        }
-
+    }
     function addItem() {
             dispatch({
                 type: 'ADD_ITEM', payload: {
@@ -88,26 +76,22 @@ const ItemsPage = () => {
                     brutto: item.brutto,
                     volume: item.volume,
                     cost: item.cost,
-                    multiply: road.multiply
-                }
+                    multiply: road.multiply}
             })
         setItem({
                 quantity: 1,
                 volume:'',
                 netto:'',
                 brutto:'',
-                cost:'',
-            }
+                cost:'',}
         )
-
         setOptions({
                 show: false,
                 image: '',
                 description: ''
             }
         )
-        let text = <>Вы можете добавить еще элемент или перейти к списку по ссылке вверху страницы</>
-        setNoItem(text)
+        setNoItem(<>Вы можете добавить еще элемент или перейти к списку по ссылке вверху страницы</>)
     }
     return (
         <div className={classes.container}>
@@ -132,12 +116,13 @@ const ItemsPage = () => {
                     <div className={classes.item__options}>
                     <div className={classes.currentItem}>
                         {hintShow[1] && <Hint
-                            body='Теперь заполните поля для этого элемента
-                                &#8595;'
+                            body='Теперь заполните поля для этого элемента'
                             num={1}
+                            arrow='down'
                             style={{
+                                flexDirection: 'row-reverse',
                                 top: -70,
-                                width: 430,
+                                width: 460,
                                 height: 55,
                             }}/>
                         }
@@ -156,8 +141,8 @@ const ItemsPage = () => {
                     <input value={item.brutto} type="number" min={1} onChange={event => setItem({...item, brutto: event.target.value})} placeholder="Масса Брутто, кг"/>
                     <input value={item.cost} type="number" min={1} onChange={event => setItem({...item, cost: event.target.value})} placeholder="Стоимость в выбранной валюте"/>
                         {hintShow[2] && <Hint
-                            body='Здесь вы можете сбросить параметры и добавить элемент
-                                &#10230;'
+                            body='Здесь вы можете сбросить параметры и добавить элемент'
+                            arrow='right'
                             num={2}
                             style={{
                                 bottom: 10,

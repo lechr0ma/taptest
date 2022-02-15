@@ -1,6 +1,9 @@
 import React, {useState, useRef} from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import uarr from '../../img/uparr.svg'
+import darr from '../../img/downarr.svg'
+import rwarr from '../../img/rwarr.svg'
 
 export const chinaTowns = ['Чунцин', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
 export const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
@@ -17,9 +20,7 @@ const MainForm = () => {
         let to = document.getElementById('cityRussia').value;
         let money = document.getElementById('currency').value;
         let multiply = currencies.filter(e=> e.name === money)[0].multiply;
-        console.log(multiply);
         dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
-        console.log(road);
     }
 
 
@@ -31,18 +32,18 @@ const MainForm = () => {
     const setTownList = (event) =>{
         document.getElementById('cityChina').value = event.target.innerText;
         setTown([]);
-        setHint('go')
     }
 
     const getText = (event) =>{
         event.preventDefault();
         let text = event.target.value.toUpperCase();
-        setHint('fill');
-        if (text){
+        if (text.replace(/\p{Alpha}/gu, '').length === 0 && text){
+            setHint('go')
             setTown(chinaTowns.filter(e => !e.toUpperCase().indexOf(text)).map((e, index) => <div key={index} onClick={setTownList}>{e}</div>))
             console.log(chinaTowns)
         } else {
             setTown([]);
+            setHint('fill');
         }
     }
     const changeCurrency = ()=>{
@@ -73,7 +74,8 @@ const MainForm = () => {
                         <div className="currencyEx">{exchange}</div>
                         { hint === 'fill' &&
                         <div className='select__pop'>
-                            Для начала заполните поля выше &uarr;
+                            Для начала заполните поля выше
+                            <img src={uarr} alt="uparrow"/>
                         </div>
                         }
                         {towns.length > 0 &&
@@ -85,11 +87,11 @@ const MainForm = () => {
 
                     {hint === 'go' &&
                     <div className='go__pop'>
-                        Теперь нажмите кнопку "Далее" &darr;
+                        Теперь нажмите кнопку "Далее" <img src={darr} alt="downarrow"/>
                     </div>
                     }
                     {hint === 'go' ?
-                        <Link to='/list'><button onClick={saveRoad} className="go">Далее &rarr;</button></Link>
+                        <Link to='/list'><button onClick={saveRoad} className="go">Далее <img src={rwarr} style={{marginLeft: 10}} alt="righarrow"/></button></Link>
                         :
                         <Link to='/list'><button disabled={true} onClick={saveRoad} className="go">Далее &rarr;</button></Link>
                     }

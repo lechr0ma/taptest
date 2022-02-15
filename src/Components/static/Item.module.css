@@ -10,9 +10,17 @@
     justify-content: space-between;
     margin-bottom: 5px;
     padding-right: 20px;
-
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 17px;
+    letter-spacing: -1px;
+    color: #606F7A;
 }
 .blueButton{
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
     font-size: 17px;
     line-height: 17px;
     color: #FFFFFF;
@@ -21,7 +29,7 @@
     width: 140px;
     height: 50px;
     background: #5DAAFF;
-    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+    box-shadow: 0 4px 40px rgba(93, 170, 255, 0.29);
     border-radius: 3px;
 }
 .blueButton:hover{
@@ -36,7 +44,7 @@
     width: 140px;
     height: 50px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
+    box-shadow: 0 4px 40px rgba(93, 170, 255, 0.29);
     border-radius: 3px;
 }
 .container img{

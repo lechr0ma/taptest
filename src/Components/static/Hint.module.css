@@ -28,4 +28,5 @@
     letter-spacing: .2px;
     justify-content: space-between;
     color: #5DAAFF;
+    box-shadow: 0 4px 40px rgba(93, 170, 255, 0.1);
 }

@@ -36,8 +36,12 @@ const Header = () => {
         let to = document.getElementById('navcityRussia').value;
         let money = document.getElementById('navcurrency').value;
         let multiply = currencies.filter(e=> e.name === money)[0].multiply;
+        if(from.replace(/\p{Alpha}/gu, '').length === 0 && from){
         dispatch({type: 'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
-        setEdit('string');
+        setEdit('string');}
+        else {
+            alert('Введите корректное значение')
+        }
     }
     let road;
     if (!roadMap.from){
@@ -75,19 +79,23 @@ const Header = () => {
     return (
         <header className='app_header'>
             <Link to='/'><img src={logo} alt="logo"/></Link>
-            {hint[0] &&  roadMap.from && <Hint
-            body='Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения'
-            num={0}
-            style={{
-                top: 70,
-                left: '20%',
-                width: 700,
-                height: 40,
-            }}
-            />
-            }
+
+
             <div className={classes.road}>
                 {road}
+                {hint[0] &&  roadMap.from && <Hint
+                    body='Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения'
+                    num={0}
+                    arrow = 'up'
+                    style={{
+                        flexDirection: 'row-reverse',
+                        top: 55,
+                        left: -200,
+                        width: 790,
+                        height: 55,
+
+                    }}
+                />}
             </div>
             <div>
                 {selected.length > 0 && <Link to='/basket'><button className={classes.items}>Выбранные товары({selected.length})</button></Link>}

@@ -7,9 +7,9 @@ import Header from "./Header";
 
 const chinaTowns = ['Чунцин', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
 const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
-const currencies = [{name: 'USD', exchange: '80 руб.'},
-    {name: 'CNY', exchange: '12 руб'},
-    {name: 'RUB', exchange: ''}]
+const currencies = [{name: 'USD', exchange: '80 руб.', multiply: 80},
+    {name: 'CNY', exchange: '12 руб.', multiply: 12},
+    {name: 'RUB', exchange: '', multiply: 1}]
 
 const MainMobile = () => {
     const dispatch = useDispatch();
@@ -18,9 +18,8 @@ const MainMobile = () => {
         let from = document.getElementById('cityChinaMobile').value;
         let to = document.getElementById('cityRus').innerText;
         let money = document.getElementById('currencyMobile').innerText;
-
-        dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money}})
-        console.log(road);
+        let multiply = currencies.filter(e=> e.name === money)[0].multiply;
+        dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money, multiply: multiply}})
     }
     let [chinaTownsList, setChinaTown] = useState([]);
     let [russiaTownsList, setRussiaTown] = useState([])
@@ -31,22 +30,23 @@ const MainMobile = () => {
     const setTownChina = (event) =>{
         document.getElementById('cityChinaMobile').value = event.target.innerText;
         setChinaTown([]);
-        setFill(true);
-        setHint(false);
     }
 
     const getText = (event) =>{
         event.preventDefault();
         let text = event.target.value.toUpperCase();
-        if (text){
-            setChinaTown(chinaTowns.filter(e => !e.toUpperCase().indexOf(text)).map(e => <div className={classes.listItem} onClick={setTownChina}>{e}</div>));
-        } else {
+        if (text && text.replace(/\p{Alpha}/gu, '').length === 0){
+            setChinaTown(chinaTowns.filter(e => !e.toUpperCase().indexOf(text)).map(e => <div key={e} className={classes.listItem} onClick={setTownChina}>{e}</div>));
+            setFill(true);
+            setHint(false);
+        }
+        else {
             setFill(false);
             setChinaTown([]);
         }
     }
     const getRussian = () =>{
-        setRussiaTown(russiaTowns.map(e => <div className={classes.listItem} onClick={setTownRus}>{e}</div> ));
+        setRussiaTown(russiaTowns.map(e => <div key={e} className={classes.listItem} onClick={setTownRus}>{e}</div> ));
         setCurrencyList([]);
     }
     const setTownRus = (event) => {
@@ -54,7 +54,7 @@ const MainMobile = () => {
         setRussiaTown([]);
     }
     const getCurrency = () => {
-        setCurrencyList(currencies.map(e => <div className={classes.listItem} onClick={setCur}>{e.name}</div> ));
+        setCurrencyList(currencies.map(e => <div key={e.name} className={classes.listItem} onClick={setCur}>{e.name}</div> ));
         setRussiaTown([]);
     }
     const setCur = (event) =>{
@@ -91,11 +91,11 @@ const MainMobile = () => {
                     <div className={classes.inputForm}>{exchange}</div>
                 </div>
             </div>
-            {isFilled ?<Link to='/list'><button onClick={saveRoad} className={classes.mainButton}>Выбрать мебель</button></Link>
+            {isFilled ? <Link to='/list'><button onClick={saveRoad} className={classes.mainButton}>Выбрать мебель</button></Link>
             :
                 <button className={classes.mainButton} onClick={()=>setHint(true)}>Выбрать мебель</button>}
 
-            {hint && <div className={classes.hint}>*Сначала заполните поля!</div> }
+            {hint && <div className={classes.hint}>Введите корректное название города!</div> }
 
         </div>
     );
