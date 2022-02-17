@@ -4,25 +4,26 @@ import SelectedItems from "../static/SelectedItems";
 import {useSelector} from "react-redux";
 import Hint from "../static/Hint";
 
-const Basket = () => {
+const Basket = ({title}) => {
     const selected = useSelector(state => state.selected);
     const hints = useSelector(state => state.hints);
     const road = useSelector(state => state.road);
 
     return (
         <div className={classes.container}>
-            <div className={classes.title}>
+            {title && <div className={classes.title}>
                 <h1>Добавленная мебель ({selected.length})</h1>
+            </div>}
+            <div className={classes.table}>
                 {hints[3] && <Hint
-                            body='Чтобы отредактировать  введенные ланные, просто нажмите на поле'
-                            num={3}
-                            style={{width: 600,
-                                height: 40,
-                                left: 550}}
+                body='Чтобы отредактировать  введенные ланные, просто нажмите на поле'
+                num={3}
+                style={{width: 640,
+                    height: 55,
+                    left: 550,
+                    top: -80}}
                 />
                 }
-            </div>
-            <div className={classes.table}>
                 <div className={classes.tableOptions}>
                     <div>Кол-во</div>
                     <div>Общая масса нетто, кг</div>

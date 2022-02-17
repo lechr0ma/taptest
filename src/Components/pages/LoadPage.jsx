@@ -13,7 +13,7 @@ const LoadPage = () => {
     setTimeout(serverEmu, 2000);
     return (
         <div>
-            <Header/>
+            <Header isRoad={true} isBasket={true}/>
         <div className={classes.container}>
             <div className={classes.loading}>
                 <img src={spinner} alt="Загрузка"/>

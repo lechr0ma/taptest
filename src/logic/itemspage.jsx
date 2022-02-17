@@ -82,7 +82,8 @@ const filteredAndChosen = (text, setArr, setItem, setOptions, currentItem, id, a
             setOptions({
                 show: true,
                 description: currentItem.description,
-                image: currentItem.image
+                image: currentItem.image,
+                id: id
             });
             setItem({
                     quantity: 1,

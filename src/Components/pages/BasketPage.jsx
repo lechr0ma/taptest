@@ -13,10 +13,9 @@ const BasketPage = () => {
     }else{
     return (
         <div>
-            <Header></Header>
-            <Basket></Basket>
+            <Header isRoad={true}></Header>
+            <Basket title={true}></Basket>
             <BasketBottomButtons/>
-
         </div>
     );}
 };

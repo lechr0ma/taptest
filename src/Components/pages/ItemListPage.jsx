@@ -12,7 +12,7 @@ const ItemListPage = () => {
     }else{
     return (
         <div>
-        <Header/>
+        <Header isRoad={true}/>
         <ItemsPage/>
         </div>
     );}

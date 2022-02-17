@@ -44,7 +44,7 @@ const Total = () => {
                 <div>{brutto} кг. брутто</div>
                 <div>{volume} м3</div>
                 <div>{cost} руб.</div>
-                <div onClick={resetSelected}>Очистить</div>
+                <div style={{color: '#5DAAFF', cursor:'pointer'}} onClick={resetSelected}>Сбросить</div>
             </div>
             <div className={classes.itemButtons}>
                 <Link to='/list'><button className={classes.blue__btn}>Добавить</button></Link>
@@ -60,17 +60,17 @@ const Total = () => {
             </div>
             <div className={classes.totalButtons}>
                 {hints[6] && <Hint
-                            body='Свяжитесь с нами, чтобы узнать точную стоимость доставки
-                    &darr;'
+                            body='Свяжитесь с нами, чтобы узнать точную стоимость доставки'
+                            arrow='down'
                             num={6}
-                            style={{top: -50,
+                            style={{top: -65,
                                 right: 0,
-                                width: 550,
-                                height: 40}}
+                                width: 600,
+                                height: 55}}
                 />
                 }
                 <button className={classes.white__btn} onClick={download}>Сохранить расчет   &rarr;</button>
-                <button className={classes.blue__btn} onClick={()=>hist('/contacts')}>Связаться по доставке</button>
+                <button className={classes.blue__btn} style={{fontWeight: 600, width: 300}} onClick={()=>hist('/contacts')}>Связаться по доставке</button>
             </div>
         </div>
     );

@@ -18,19 +18,33 @@
     width: 100%;
     display: flex;
     align-self: flex-end;
-    height: 80px;
+    height: 100px;
+    margin-bottom: 1px;
     border-radius: 5px;
-    margin-bottom: 5px;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 23px;
+    letter-spacing: -1px;
+    background: #F8FAFF;
+    border: 1px solid #E2E4EA;
+    box-sizing: border-box;
+    color: #606F7A;
+    overflow: hidden;
 }
 .item__description{
+
     min-width: 30%;
     display: flex;
     align-items: center;
     background: #F8FAFF;
     border-right: 1px solid #E2E4EA;
+    line-height: 23px;
 
 }
 .item__description p{
+
  text-align: center;
     width: 100%;
 }
@@ -45,7 +59,7 @@
     justify-content: center;
     align-items: center;
     background: #F8FAFF;
-    border-right: 2px solid #E2E4EA;
+    border-right: 1px solid #E2E4EA;
     width: 18%;
 }
 .remove button{
@@ -58,8 +72,8 @@
     color: red;
     width: 15px;
     height: 15px;
-    font-weight: 400;
-    font-size: 30px;
+    font-weight: 300;
+    font-size: 50px;
     line-height: 17px;
 }
 .quantity:hover::after, .netto:hover::after, .brutto:hover::after, .volume:hover::after, .cost:hover::after {

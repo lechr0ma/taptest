@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import classes from "./SelectedItems.module.css";
+import ok from '../../img/ok.svg'
 
 const BasketItem = ({item, rem, set}) => {
 
@@ -12,9 +13,9 @@ const BasketItem = ({item, rem, set}) => {
         let mem = [];
         function editItem(event) {
             let text = event.target.innerText;
-            if (!text || text.replace(/[1-9]/g,'').length > 0){
+            if (!text || +text === 0 || text.replace(/[\d]/g,'').length > 0){
                 event.target.innerText = mem[0];
-                alert('Ввести можно только цифры');
+                alert('Введите корректное значение(только целые числа)');
             }else {
             let props  = {
                 quantity: +refQuantity.current.innerText,
@@ -33,7 +34,7 @@ const BasketItem = ({item, rem, set}) => {
         }
         function setInput(e) {
                 let text = prompt('Введите значение больше нуля', e.target.innerText);
-            if (text.replace(/[1-9]/g,'').length === 0 && text){
+            if (text.replace(/[0-9]/g,'').length === 0 && text && +text !== 0){
                 e.target.innerText = text;
                 let props  = {
                     quantity: +refQuantity.current.innerText,
@@ -50,7 +51,7 @@ const BasketItem = ({item, rem, set}) => {
         function getNetto() {
             let text = document.getElementById('netto').value;
 
-            if (text.replace(/[1-9]/g,'').length === 0 && text){
+            if (text.replace(/[0-9]/g,'').length === 0 && text && +text !== 0){
                 let props  = {
                     quantity: +refQuantity.current.innerText,
                     volume: +refVolume.current.innerText,
@@ -74,13 +75,19 @@ const BasketItem = ({item, rem, set}) => {
             <div className={classes.quantity} ref={refQuantity} onClick={setInput}>{item.quantity}</div>
 
                 {editNetto === 'show' && <div className={classes.netto} ref={refNetto} onClick={()=> setNetto('edit')} >{item.netto}</div>}
-                {editNetto === 'edit' && <div className={classes.netto__input}><input style={{width:"50%"}} id='netto' defaultValue={item.netto} type='number'/><button onClick={getNetto}>ok</button></div>}
+                {editNetto === 'edit' && <div className={classes.netto__input}><input style={{width:"50%", height:'20px'}} id='netto' defaultValue={item.netto} type='number'/>
+                <button onClick={getNetto} style={{
+                    border: 'none',
+                    backgroundColor: 'inherit',
+                    height:26
+                }}><img src={ok} alt="ok"/>
+                </button></div>}
 
 
             <div className={classes.brutto} ref={refBrutto} contentEditable='true' onClick={setMem} onBlur={editItem}>{item.brutto}</div>
             <div className={classes.volume} ref={refVolume} contentEditable='true' onClick={setMem} onBlur={editItem}>{item.volume}</div>
             <div className={classes.cost} ref={refCost} contentEditable='true' onClick={setMem} onBlur={editItem}>{item.cost}</div>
-            <div className={classes.remove}><button onClick={() => rem(item)}><h2>&#215;</h2></button></div>
+            <div className={classes.remove}><button onClick={() => rem(item)}>&#215;</button></div>
         </div>
     );
 };

@@ -23,16 +23,18 @@ const BasketBottomButtons = () => {
                 </button>
             </Link>
             {hints[5] && <Hint
-                body='Узнайте стоимость доставки, нажав на кнопку “Рассчитать”&darr;'
+                body='Узнайте стоимость доставки, нажав на кнопку “Рассчитать”'
                 num={5}
-                style={{bottom:'130%', right: 100 , width: '500px'}}
+                arrow='down'
+                style={{bottom:'130%', right: 0 , width: 590, height: 55}}
             />
 
             }
             {hints[4] && <Hint
-                body='Через кнопку “Добавить” Вы можете добавлять еще элементы &rarr;'
+                body='Через кнопку “Добавить” Вы можете добавлять еще элементы'
                 num={4}
-                style={{bottom: '0px', right: '100%', width: '600px',height: '50px'}}/>
+                arrow='right'
+                style={{bottom: 0, right: '100%', width: 610,height: 55}}/>
             }
         </div>
     );

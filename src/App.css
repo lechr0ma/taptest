@@ -4,10 +4,9 @@
   min-height: 900px;
   overflow: auto;
 }
-header{
+.app_header{
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 50px 100px;
   position: relative;
 }
@@ -19,7 +18,7 @@ header{
   min-height: inherit;
 }
 .feedback{
-
+  margin-left: auto;
   width: 172px;
   height: 60px;
   border: 0;
@@ -168,7 +167,7 @@ article{
   display: flex;
 }
 .total {
-  background: #E5E5E5;
+  background: #EFF3F9;
 }
 .townsList{
   position: absolute;

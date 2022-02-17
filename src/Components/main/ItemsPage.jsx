@@ -6,13 +6,24 @@ import {itemsMass} from "../../App";
 import Hint from "../static/Hint";
 import {filteredItems, filteredAndChosen} from "../../logic/itemspage";
 import larr from '../../img/leftarr.svg'
+import {useNavigate} from "react-router-dom";
 
 const ItemsPage = () => {
-
+    const hist = useNavigate()
+    const selected = useSelector(state => state.selected)
+    let selectedId = () => {
+        let arr = [];
+        if (selected.length){
+            selected.forEach(e => {arr.push(e.id)})
+            return itemsMass.filter(e=> arr.indexOf(e.id) < 0)
+        }else {
+            return itemsMass}
+        }
     const hintShow = useSelector(state => state.hints);
     const road = useSelector(state => state.road)
     const dispatch = useDispatch();
-    const initialList = itemsMass.map(element =>
+    const initialList = selectedId().length ?
+        selectedId().map(element =>
         <Item
             key={element.id}
             item={element}
@@ -23,13 +34,26 @@ const ItemsPage = () => {
             showBtn={true}
             get={false}
         />
-    )
+        )
+        :
+        selectedId().map(element =>
+            <Item
+                key={element.id}
+                item={element}
+                id={element.id}
+                img={element.image}
+                description={element.description}
+                rem={setOption}
+                showBtn={true}
+                get={false}
+            />)
+
     const [options, setOptions] = useState({
         show: false,
         image: '',
-        description: ''
+        description: '',
+        id: 0
     });
-    const [noItem, setNoItem] = useState('Вы пока не выбрали ни одного элемента.')
     const [item, setItem] = useState({
         quantity: 1,
         volume:'',
@@ -50,12 +74,12 @@ const ItemsPage = () => {
 
     function filterItems() {
         let text = document.getElementById('search').value
-        return filteredItems(text, setItemsList, itemsMass, setOption)
+        return filteredItems(text, setItemsList, selectedId(), setOption)
         }
 
     function setOption(currentitem, id) {
         let text = document.getElementById('search').value
-        return filteredAndChosen(text, setItemsList, setItem, setOptions, currentitem, id, itemsMass, setOption)
+        return filteredAndChosen(text, setItemsList, setItem, setOptions, currentitem, id, selectedId(), setOption)
     }
 
     function resetItem() {
@@ -69,6 +93,7 @@ const ItemsPage = () => {
             dispatch({
                 type: 'ADD_ITEM', payload: {
                     key: Date.now(),
+                    id: options.id,
                     image: options.image,
                     description: options.description,
                     quantity: item.quantity,
@@ -78,20 +103,8 @@ const ItemsPage = () => {
                     cost: item.cost,
                     multiply: road.multiply}
             })
-        setItem({
-                quantity: 1,
-                volume:'',
-                netto:'',
-                brutto:'',
-                cost:'',}
-        )
-        setOptions({
-                show: false,
-                image: '',
-                description: ''
-            }
-        )
-        setNoItem(<>Вы можете добавить еще элемент или перейти к списку по ссылке вверху страницы</>)
+        hist('/basket')
+
     }
     return (
         <div className={classes.container}>
@@ -111,7 +124,7 @@ const ItemsPage = () => {
             <div className={classes.itemOption}>
                 <h2>Затем заполните следующие поля выбранного элемента:</h2>
                 { !options.show  ?
-                    <div className={classes.noItems}>{noItem}</div>
+                    <div className={classes.noItems}>Вы пока не выбрали ни одного элемента.</div>
                     :
                     <div className={classes.item__options}>
                     <div className={classes.currentItem}>

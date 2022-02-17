@@ -7,7 +7,7 @@ import FeedbackForm from "../forms/FeedbackForm";
 const ContactsPage = () => {
     return (
         <div style={{backgroundColor: 'inherit'}}>
-            <Header/>
+            <Header isRoad={true}/>
             <div className={classes.feedbackPage}>
                 <h1>Свяжитесь с нами</h1>
                 <div className={classes.container}>

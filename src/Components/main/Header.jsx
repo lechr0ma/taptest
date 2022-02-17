@@ -3,14 +3,15 @@ import logo from "../../img/logo.png";
 import classes from './Header.module.css';
 import editImg from '../../img/edit.svg';
 import okImg from '../../img/ok.svg';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Hint from "../static/Hint";
 import {chinaTowns, russiaTowns, currencies} from "../forms/MainForm";
 
 
 
-const Header = () => {
+const Header = ({isRoad, isBasket}) => {
+    const hist = useNavigate();
     const [towns, setTown] = useState([])
     const getText = (event) =>{
         event.preventDefault();
@@ -80,7 +81,8 @@ const Header = () => {
         <header className='app_header'>
             <Link to='/'><img src={logo} alt="logo"/></Link>
 
-
+            {isRoad
+            &&
             <div className={classes.road}>
                 {road}
                 {hint[0] &&  roadMap.from && <Hint
@@ -90,17 +92,19 @@ const Header = () => {
                     style={{
                         flexDirection: 'row-reverse',
                         top: 55,
-                        left: -200,
+                        left: 50,
                         width: 790,
                         height: 55,
 
                     }}
                 />}
             </div>
-            <div>
-                {selected.length > 0 && <Link to='/basket'><button className={classes.items}>Выбранные товары({selected.length})</button></Link>}
-            </div>
-            <Link to='/contacts'><button className='feedback'>Связаться</button></Link>
+            }
+            { isBasket
+                &&
+                <div className={classes.items}>Выбранные товары({selected.length})</div>
+            }
+            <button onClick={() => hist('/contacts')} className='feedback'>Связаться</button>
         </header>
     );
 };

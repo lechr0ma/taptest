@@ -13,7 +13,7 @@ const TotalPage = () => {
     }else{
     return (
         <div className='total'>
-            <Header/>
+            <Header isBasket={true}/>
             <Basket/>
             <Total/>
         </div>

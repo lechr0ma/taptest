@@ -23,11 +23,11 @@ const itemsMass = [
     {id: 7, image: photo, description:'Диван-кровать, раскладывается 77', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
     {id: 8, image: photo, description:'Диван-кровать, раскладывается 78', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
     {id: 9, image: photo, description:'Диван-кровать, раскладывается 79', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
-    {id: 10, image: photo, description:'Диван-кровать, раскладывается 7444', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
-    {id: 11, image: photo, description:'Диван-кровать, раскладывается 7666', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
-    {id: 12, image: photo, description:'Диван-кровать, раскладывается 7555', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
-    {id: 13, image: photo, description:'Диван-кровать, раскладывается 74444', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
-    {id: 14, image: photo, description:'Диван-кровать, раскладывается 7444', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },]
+    {id: 10, image: photo, description:'Диван-кровать, раскладывается 744422', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
+    {id: 11, image: photo, description:'Диван-кровать, раскладывается 766633', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
+    {id: 12, image: photo, description:'Диван-кровать, раскладывается 7555222', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
+    {id: 13, image: photo, description:'Диван-кровать, раскладывается 7444412123', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },
+    {id: 14, image: photo, description:'Диван-кровать, раскладывается 74442233', netto: '23', brutto: '26', volume: '2', cost: '27 000 руб.' },]
 export {itemsMass};
 
 

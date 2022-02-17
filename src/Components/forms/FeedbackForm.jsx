@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import classes from './FeedbackForm.module.css';
 import {useNavigate} from 'react-router-dom';
+import larr from '../../img/leftarr.svg'
 
 
 const FeedbackForm = () => {
@@ -36,7 +37,7 @@ const FeedbackForm = () => {
                     <button type='submit' onClick={error}>Связаться по доставке</button>
                 <p>Нажимая на кнопку, вы даете <a href='#' >согласие на обработку</a> своих персональных данных</p>
             </div>
-            <button onClick={()=>hist(-1)} className={classes.back}>&larr; Назад</button>
+            <button onClick={()=>hist(-1)} className={classes.back}><img src={larr} alt="arrow"/> Назад</button>
         </div>
     );
 };
