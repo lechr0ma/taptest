@@ -18,7 +18,7 @@ const MobileApp = () => {
         <div style={{
             width: '100wv',
             // height: '100vh',
-            backgroundColor:'#E5E5E5'
+            backgroundColor:'#EFF3F9'
         }}>
             <Routes>
                 <Route exact path='/' element={<MainMobile/>}/>
@@ -29,6 +29,7 @@ const MobileApp = () => {
                 <Route path='/total' element={<TotalMobile/>}/>
                 <Route path='/feedback' element={<FeedbackFormMobile/>}/>
                 <Route path='/sended' element={<Sended/>}/>
+
             </Routes>
         </div>
     );

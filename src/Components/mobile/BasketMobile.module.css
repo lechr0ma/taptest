@@ -31,6 +31,7 @@ width: 95%;
     height: 90vh;
     overflow: scroll;
     border-radius: 5px;
+    padding-bottom: 80px;
 }
 .noitem{
     margin-top: 100px;
@@ -83,6 +84,10 @@ width: 95%;
     align-items: center;
     justify-content: space-around;
 }
+.photo{
+    border: 1px solid #E2E4EA;
+    box-sizing: border-box;
+}
 .basket__description button{
     border: 0;
     border-radius: 5px;
@@ -101,8 +106,11 @@ width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 12px;
 }
 .basket__buttons{
+    position: absolute;
+    bottom: 0;
     display: flex;
     width: 90%;
     align-items: center;

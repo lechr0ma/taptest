@@ -1,25 +1,30 @@
 import React from 'react';
 import classes from './TotalMobile.module.css'
 import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import Header from "./Header";
 
 
 const TotalMobile = () => {
     const road = useSelector(state => state.road);
+    const isRoad = !!road.from;
     const selected = useSelector(state => state.selected);
     const hist =  useNavigate();
+    if (!isRoad){
+        return <Navigate to='/'/>
+    }else{
     let options = {
         volume:0,
         netto:0,
         brutto:0,
-        cost:0};
-
+        cost:0
+    };
     selected.forEach(e => {
         options.volume += e.volume*e.quantity;
         options.brutto += e.brutto*e.quantity;
         options.netto += e.netto*e.quantity;
-        options.cost += e.cost*e.quantity*road.multiply});
+        options.cost += e.cost*e.quantity*road.multiply
+    });
     return (
         <div className={classes.container}>
             <Header goback={true}/>
@@ -42,6 +47,6 @@ const TotalMobile = () => {
             </div>
         </div>
     );
-};
+}};
 
 export default TotalMobile;

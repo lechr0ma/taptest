@@ -13,15 +13,6 @@ const defaultState = {
         road: {from:'', to:'', money: '', exchange:'', multiply: 1},
         selected: [],
         hints: [true, true, true, true, true, true, true]
-        // hints: {
-        //          hintNav: true,
-        //         hintOptionsFill: true,
-        //         hintOptionsReset: true,
-        //         hintBasketReset: true,
-        //         hintBasketEdit: true,
-        //         hintBasketTotal: true,
-        //         hintTotalMes: true
-        //     }
 }
 const reducer = (state = defaultState, action) =>{
     switch (action.type) {

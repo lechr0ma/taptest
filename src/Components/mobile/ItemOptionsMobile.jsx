@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {itemsMass} from "../../App";
 import cl from "./Itemlist.module.css";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Header from "./Header";
 
 const ItemOptionsMobile = () => {
+    const road = useSelector(state => state.road);
+    const isRoad = !!road.from;
     const hist = useNavigate();
     const link = useParams();
     const dispatch = useDispatch();
@@ -20,11 +22,11 @@ const ItemOptionsMobile = () => {
         netto:'',
         brutto:'',
         cost: '',});
-     function submit() {
+    function submit() {
         dispatch({type: 'ADD_ITEM', payload: select});
-         hist('/basket') ;
-     }
-     function reset() {
+        hist('/basket') ;
+    }
+    function reset() {
         setSelect({
             key: Date.now(),
             id: item.id,
@@ -35,8 +37,10 @@ const ItemOptionsMobile = () => {
             netto:'',
             brutto:'',
             cost: '',})
-     }
-
+    }
+    if (!isRoad){
+        return <Navigate to='/'/>
+    }else{
     return (
         <div className={cl.container__options}>
             <Header goback={true}/>
@@ -62,6 +66,6 @@ const ItemOptionsMobile = () => {
 
         </div>
     );
-};
+}};
 
 export default ItemOptionsMobile;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import classes from './BasketMobile.module.css';
 import noitem from '../../img/noitem.svg'
 import {useSelector} from "react-redux";
@@ -7,12 +7,17 @@ import BasketItemMobile from "./BasketItemMobile";
 import Header from "./Header";
 
 const BasketMobile = () => {
+    const road = useSelector(state => state.road);
+    const isRoad = !!road.from;
     const selected = useSelector(state => state.selected);
     const hist = useNavigate();
-    return (
+    if (!isRoad){
+        return <Navigate to='/'/>
+    }else{
+        return (
         <div className={classes.container}>
             <Header road={true}/>
-            <div className={classes.title}>Выбранная мебель ({selected.length})</div>
+            {selected.length > 0 && <div className={classes.title}>Выбранная мебель ({selected.length})</div>}
             {selected.length > 0 ?
                 <div className={classes.itemsList}>
                     {selected.map(element => <BasketItemMobile key={element.key} item={element}/>)}
@@ -32,6 +37,6 @@ const BasketMobile = () => {
         </div>
 
     );
-};
+}};
 
 export default BasketMobile;

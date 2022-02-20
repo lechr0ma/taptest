@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import cl from "./Itemlist.module.css";
-import {useNavigate, useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Header from "./Header";
 
 const BasketItemEdit = () => {
+    const road = useSelector(state => state.road);
+    const isRoad = !!road.from;
     const selected = useSelector(state => state.selected);
     const hist = useNavigate();
     const link = useParams();
@@ -17,18 +19,21 @@ const BasketItemEdit = () => {
     function submit() {
         let err = [];
         for (let key in edit){
-           if (edit[key]<1) {
+            if (edit[key]<1) {
                 err.push(key)
-           }
-               }
+            }
+        }
         if (err.length === 0){
-        dispatch({type: 'EDIT_ITEM', payload: {key: item.key, value: edit}});
-        hist('/basket');
+            dispatch({type: 'EDIT_ITEM', payload: {key: item.key, value: edit}});
+            hist('/basket');
         }else {
             alert('Введите корректные значения')
         }
     }
-    return (
+    if (!isRoad){
+        return <Navigate to='/'/>
+    }else{
+        return (
         <div className={cl.container__options}>
             <Header goback={true}/>
             <div className={cl.item__current}>
@@ -64,6 +69,6 @@ const BasketItemEdit = () => {
 
         </div>
     );
-};
+}};
 
 export default BasketItemEdit;
