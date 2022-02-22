@@ -52,13 +52,23 @@ const Header = ({isRoad, isBasket}) => {
         setTimeout(() => setRuList([]), 200 ) ;
         setCityRu(text);
     }
-
-
+    const getCur = () =>{
+        document.getElementsByClassName(classes.arrow)[1].classList.toggle(classes.active);
+        document.getElementsByClassName(classes.curList)[0].classList.toggle(classes.active);
+        setCurrencyList(currencies.filter(e => e.name!== currency).map(element =>
+            <div key={element.name} onClick={() => setCur(element.name)}>{element.name}</div>))
+    }
+    const setCur = (text) => {
+        document.getElementsByClassName(classes.arrow)[1].classList.toggle(classes.active);
+        document.getElementsByClassName(classes.curList)[0].classList.toggle(classes.active);
+        setTimeout(() => setCurrencyList([]), 200 ) ;
+        setCurrency(text);
+    }
 
     const setRoad = () =>{
         let from = document.getElementById('navcityChina').value;
-        let to = document.getElementById('navcityRussia').value;
-        let money = document.getElementById('navcurrency').value;
+        let to = cityRu;
+        let money = currency;
         let multiply = currencies.filter(e=> e.name === money)[0].multiply;
         if(from.replace(/\p{Alpha}/gu, '').length === 0 && from){
         dispatch({type: 'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
@@ -71,15 +81,10 @@ const Header = ({isRoad, isBasket}) => {
         road = '';
     }
     else if (edit === 'string'){
-        road = <button className={classes.roadBtn} onMouseOver={() => setEdit('div') }>{roadMap.from}&rarr;{roadMap.to}, {roadMap.money}</button>
+        road = <button className={classes.roadBtn} onMouseOver={() => setEdit('div') }>{roadMap.from} &rarr; {roadMap.to}, {roadMap.money}</button>
     } else if (edit === 'div'){
         road = <div className={classes.roadBtn_active} onMouseLeave={()=> setEdit('string')}>
-                    <div>
-                        {roadMap.from}
-                    </div>
-                    &rarr;
-                    <div>{roadMap.to},</div>
-                    <div>{roadMap.money}</div>
+                    {roadMap.from} &rarr; {roadMap.to}, {roadMap.money}
                     <button onClick={() => setEdit('select')}>
                         <img src={editImg}  alt="edit"/></button>
 
@@ -90,14 +95,20 @@ const Header = ({isRoad, isBasket}) => {
             <div className={classes.townsList}>{towns}</div>
             <i></i>
             <div id='navcityRussia' className={classes.cityRussia} onClick={getRus}>
-                {cityRu}
+                <span>{cityRu}</span>
                 <img className={classes.arrow} src={sel} alt="arrow"/>
             </div>
             <div className={classes.russiaList}>
                 {ruList}
             </div>
             <i></i>
-            <select defaultValue={roadMap.money} className={classes.currency} id='navcurrency'>{currencies.map(e => <option key={e.name}>{e.name}</option>)}</select>
+            <div  className={classes.currency} onClick={getCur} >
+                {currency}
+                <img className={classes.arrow} src={sel} alt="arrow"/>
+            </div>
+            <div className={classes.curList}>
+                {currencyList}
+            </div>
             <button onClick={setRoad}>
                 <img src={okImg} alt="OK"/></button>
         </div>

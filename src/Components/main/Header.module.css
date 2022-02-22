@@ -66,11 +66,11 @@
     left: 0;
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
     border-radius: 5px;
-    width: 30%;
+    width: 25%;
     overflow: auto;
 }
 
-.townsList div, .russiaList div{
+.townsList div, .russiaList div, .curList div{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -84,7 +84,7 @@
     line-height: 15px;
 
 }
-.townsList div:hover, .russiaList div:hover{
+.townsList div:hover, .russiaList div:hover, .curList div:hover{
     color: #FFFFFF;
     background: #2876CC;
     cursor: pointer;
@@ -142,14 +142,24 @@
     display: none;
 }
 
-.currencyEx, .cityChina, .cityRussia, .currency {
+.currencyEx, .cityChina, .currency {
     display: flex;
     align-items: center;
     justify-content: space-around;
     height: 100%;
-    width: 30%;
+    width: 25%;
     border: 0;
     background: #FFFFFF;
+}
+.cityRussia{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.cityRussia span{
+    max-width: 70%;
 }
 .cityChina:focus{
     outline: none;
@@ -165,19 +175,35 @@
     position: absolute;
     background: #FFFFFF;
     top: 40px;
-    left: 30%;
+    left: 25%;
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    width: 30%;
+    width: 40%;
     height: 0;
     overflow: auto;
     transition: height .2s ease;
 }
-.russiaList::-webkit-scrollbar{
+.russiaList::-webkit-scrollbar, .curList::-webkit-scrollbar{
     display: none;
 }
 
 .russiaList.active{
     height: 120px;
+}
+.curList{
+    position: absolute;
+    background: #FFFFFF;
+    top: 40px;
+    left: 65%;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 25%;
+    height: 0;
+    overflow: auto;
+    transition: height .2s ease;
+}
+.curList.active{
+    height: 80px;
 }

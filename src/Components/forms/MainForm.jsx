@@ -27,10 +27,11 @@ const MainForm = () => {
     const refCurrency = useRef();
     let [towns, setTown] = useState([])
     let [hint, setHint] = useState(road.from ? 'go':'fill');
-    let [cityRussia, setRussia] = useState(russiaTowns[0])
+    let [cityRussia, setRussia] = useState(road.to ? road.to : russiaTowns[0])
     let [russiaList, setList] = useState([])
-    let [exchange, setExchange] = useState(currencies[0].exchange)
-    let [currency, setCurrency] = useState(currencies[0].name)
+    let [currency, setCurrency] = useState(road.money? road.money : currencies[0].name)
+    let [exchange, setExchange] = useState(road.money ?
+        currencies.filter(e => e.name === road.money)[0].exchange : currencies[0].exchange)
     let [currencyList, setCurList] = useState([])
 
     const setTownList = (event) =>{
