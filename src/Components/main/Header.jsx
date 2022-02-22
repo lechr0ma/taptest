@@ -7,12 +7,26 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Hint from "../static/Hint";
 import {chinaTowns, russiaTowns, currencies} from "../forms/MainForm";
+import sel from '../../img/selectarr.svg'
 
 
 
 const Header = ({isRoad, isBasket}) => {
+    const roadMap = useSelector(state => state.road);
+    const hint = useSelector(state => state.hints);
+    const selected = useSelector(state => state.selected)
+    const dispatch = useDispatch();
     const hist = useNavigate();
-    const [towns, setTown] = useState([])
+
+    const [towns, setTown] = useState([]);
+    const [edit, setEdit] = useState('string');
+    const [cityRu, setCityRu] = useState(roadMap.to)
+    const [ruList, setRuList] = useState([])
+    const [currency, setCurrency] = useState(roadMap.money)
+    const [currencyList, setCurrencyList] = useState([])
+
+    let road;
+
     const getText = (event) =>{
         event.preventDefault();
         let text = event.target.value.toUpperCase();
@@ -26,12 +40,21 @@ const Header = ({isRoad, isBasket}) => {
         document.getElementById('navcityChina').value = event.target.innerText;
         setTown([]);
     }
-    const roadMap = useSelector(state => state.road);
-    const hint = useSelector(state => state.hints);
-    const selected = useSelector(state => state.selected)
-    const dispatch = useDispatch();
+    const getRus = () =>{
+        document.getElementsByClassName(classes.arrow)[0].classList.toggle(classes.active);
+        document.getElementsByClassName(classes.russiaList)[0].classList.toggle(classes.active);
+        setRuList(russiaTowns.filter(e => e!== cityRu).map(element =>
+            <div key={element} onClick={() => setRus(element)}>{element}</div>))
+    }
+    function setRus(text) {
+        document.getElementsByClassName(classes.arrow)[0].classList.toggle(classes.active);
+        document.getElementsByClassName(classes.russiaList)[0].classList.toggle(classes.active);
+        setTimeout(() => setRuList([]), 200 ) ;
+        setCityRu(text);
+    }
 
-    let [edit, setEdit] = useState('string')
+
+
     const setRoad = () =>{
         let from = document.getElementById('navcityChina').value;
         let to = document.getElementById('navcityRussia').value;
@@ -43,10 +66,6 @@ const Header = ({isRoad, isBasket}) => {
         else {
             alert('Введите корректное значение')
         }
-    }
-    let road;
-    if (!roadMap.from){
-        edit = 'none';
     }
     if(edit === 'none'){
         road = '';
@@ -67,10 +86,16 @@ const Header = ({isRoad, isBasket}) => {
                 </div>
     } else if(edit === 'select'){
         road = <div className={classes.roadBtn_edit}>
-            <input autoComplete='off' id='navcityChina' className={classes.cityChina} defaultValue={roadMap.from} placeholder={roadMap.from} onChange={getText}/>
+            <input autoComplete='off' id='navcityChina' className={classes.cityChina} defaultValue={roadMap.from} onChange={getText}/>
             <div className={classes.townsList}>{towns}</div>
             <i></i>
-            <select id='navcityRussia' className={classes.cityRussia} defaultValue={roadMap.to}>{russiaTowns.map((element, index) => <option key={index}>{element}</option>)}</select>
+            <div id='navcityRussia' className={classes.cityRussia} onClick={getRus}>
+                {cityRu}
+                <img className={classes.arrow} src={sel} alt="arrow"/>
+            </div>
+            <div className={classes.russiaList}>
+                {ruList}
+            </div>
             <i></i>
             <select defaultValue={roadMap.money} className={classes.currency} id='navcurrency'>{currencies.map(e => <option key={e.name}>{e.name}</option>)}</select>
             <button onClick={setRoad}>
