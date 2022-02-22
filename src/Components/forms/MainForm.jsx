@@ -4,9 +4,10 @@ import {useDispatch, useSelector} from "react-redux";
 import uarr from '../../img/uparr.svg'
 import darr from '../../img/downarr.svg'
 import rwarr from '../../img/rwarr.svg'
+import sel from '../../img/selectarr.svg'
 
 export const chinaTowns = ['Чунцин', 'Шанхай', 'Пекин', 'Тяньцзинь', 'Гуанчжоу', 'Чэнду', 'Шэньчжэнь', 'Дунгуань', 'Ухань', 'Шэньян' ];
-export const russiaTowns = ['Москва', 'Санкт-Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
+export const russiaTowns = ['Москва', 'Санкт - Петербург', 'Казань', 'Владивосток', 'Екатеринбург', 'Хабаровск', 'Челябинск', 'Самара', 'Нижний Новгород'];
 export const currencies = [{name: 'USD', exchange: '80 руб.', multiply: 80},
                     {name: 'CNY', exchange: '12 руб.', multiply: 12},
                     {name: 'RUB', exchange: '', multiply: 1}]
@@ -17,23 +18,37 @@ const MainForm = () => {
     const road = useSelector(state => state.road);
     const saveRoad = () => {
         let from = document.getElementById('cityChina').value;
-        let to = document.getElementById('cityRussia').value;
-        let money = document.getElementById('currency').value;
+        let to = cityRussia;
+        let money = currency;
         let multiply = currencies.filter(e=> e.name === money)[0].multiply;
         dispatch({type:'ADD_ROAD', payload:{from:from, to:to, money:money, multiply:multiply}})
     }
 
-
     const refCurrency = useRef();
     let [towns, setTown] = useState([])
-    let [hint, setHint] = useState('fill');
+    let [hint, setHint] = useState(road.from ? 'go':'fill');
+    let [cityRussia, setRussia] = useState(russiaTowns[0])
+    let [russiaList, setList] = useState([])
     let [exchange, setExchange] = useState(currencies[0].exchange)
+    let [currency, setCurrency] = useState(currencies[0].name)
+    let [currencyList, setCurList] = useState([])
 
     const setTownList = (event) =>{
         document.getElementById('cityChina').value = event.target.innerText;
         setTown([]);
     }
-
+    const getRus = () =>{
+        document.getElementsByClassName('arrow')[0].classList.toggle('active');
+        document.getElementsByClassName('russiaList')[0].classList.toggle('active');
+        setList(russiaTowns.filter(e => e!== cityRussia).map(element =>
+        <div key={element} onClick={() => setRus(element)}>{element}</div>))
+    }
+    function setRus(text) {
+        document.getElementsByClassName('arrow')[0].classList.toggle('active');
+        document.getElementsByClassName('russiaList')[0].classList.toggle('active');
+        setTimeout(() => setList([]), 200 ) ;
+        setRussia(text);
+    }
     const getText = (event) =>{
         event.preventDefault();
         let text = event.target.value.toUpperCase();
@@ -46,9 +61,19 @@ const MainForm = () => {
             setHint('fill');
         }
     }
-    const changeCurrency = ()=>{
-        let name = refCurrency.current.value;
-        setExchange(currencies.filter(e => e.name === name)[0].exchange);
+    const getCurrensies = () => {
+        document.getElementsByClassName('arrow')[1].classList.toggle('active');
+        document.getElementsByClassName('currencyList')[0].classList.toggle('active');
+        setCurList(currencies.filter(e => e.name!== currency).map(element =>
+            <div key={element.name} onClick={() => changeCurrency(element.name)}>{element.name}</div>))
+    }
+    const changeCurrency = (text)=>{
+        document.getElementsByClassName('arrow')[1].classList.toggle('active');
+        document.getElementsByClassName('currencyList')[0].classList.toggle('active');
+        setTimeout(() => setList([]), 200 ) ;
+        setCurrency(text);
+
+        setExchange(currencies.filter(e => e.name === text)[0].exchange);
     }
     return (
         <article>
@@ -65,11 +90,23 @@ const MainForm = () => {
                 </div>
                 <div className="mainInputsRow">
                     <div className='main__inputs'>
-                        <input autoComplete='off' placeholder={road.from} id='cityChina' onChange={getText}/>
+                        <input autoComplete='off' defaultValue={road.from} id='cityChina' onChange={getText}/>
                         <i/>
-                        <select id='cityRussia'>{russiaTowns.map((element, index) => <option key={index}>{element}</option>)}</select>
+                        <div id='cityRussia' onClick={getRus}>
+                            {cityRussia}
+                            <img className='arrow' src={sel} alt="arrow"/>
+                        </div>
+                        <div className="russiaList">
+                            {russiaList}
+                        </div>
                         <i/>
-                        <select ref={refCurrency} onChange={changeCurrency} id='currency'>{currencies.map(e => <option key={e.name}>{e.name}</option>)}</select>
+                        <div ref={refCurrency} onClick={getCurrensies} id='currency'>
+                            {currency}
+                            <img className='arrow' src={sel} alt="arrow"/>
+                        </div>
+                        <div className="currencyList">
+                            {currencyList}
+                        </div>
                         <i/>
                         <div className="currencyEx">{exchange}</div>
                         { hint === 'fill' &&
