@@ -1,0 +1,69 @@
+.container {
+    max-height: 420px;
+    overflow: scroll;
+    margin-right: -4px;
+    padding: 0;
+}
+
+.container::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #BDCBE0;
+    border-radius: 50px;
+
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    align-self: flex-end;
+    height: 100px;
+    margin-bottom: 1px;
+    border-radius: 5px;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 23px;
+    letter-spacing: -1px;
+    background: #F8FAFF;
+    border: 1px solid #E2E4EA;
+    box-sizing: border-box;
+    color: #606F7A;
+    overflow: hidden;
+}
+
+
+
+.options {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8FAFF;
+    border-right: 1px solid #E2E4EA;
+    width: 18%;
+    cursor: pointer;
+}
+.options__rem{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8FAFF;
+    border-right: 1px solid #E2E4EA;
+    width: 18%;
+    cursor: pointer;
+}
+
+.options:hover::after {
+    content: url("../../img/edit.svg");
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 40%;
+    right: 10%;
+}

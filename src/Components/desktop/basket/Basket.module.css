@@ -1,0 +1,15 @@
+.title {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+

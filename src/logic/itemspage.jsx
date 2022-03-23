@@ -1,97 +1,59 @@
-import React from "react";
-import Item from "../Components/static/Item";
+import React, {useMemo} from "react";
+import Item from "../Components/desktop/itemsPage/Item";
+import {useSelector} from "react-redux";
+import {itemsMass} from "./staticData";
 
 
-const filteredItems = ( text, setFunction, arr, propsFunction) => {
-    if (text){
-     return setFunction(arr.filter(e => e.description.toUpperCase().includes(text)).map(element =>
-        <Item
-            key={element.id}
-            item={element}
-            id={element.id}
-            img={element.image}
-            description={element.description}
-            rem={propsFunction}
-            showBtn={true}
-        />
-    ))} else {
-        return setFunction(arr.map(element =>
-            <Item
-                key={element.id}
-                item={element}
-                id={element.id}
-                img={element.image}
-                description={element.description}
-                rem={propsFunction}
-                showBtn={true}
-            />))
-    }
-}
-const filteredAndChosen = (text, setArr, setItem, setOptions, currentItem, id, arr, propsFunction) => {
-    if (text){
-                let foundItems = arr.filter(e => e.description.toUpperCase().includes(text));
-                 setArr(foundItems.map(element => element.id === id ?
-                    <Item
-                        key={element.id}
-                        item={element}
-                        id={element.id}
-                        img={element.image}
-                        description={element.description}
-                        rem={propsFunction}
-                        showBtn={true}
-                        get={true}
-                    />
-                    :
-                    <Item
-                        key={element.id}
-                        item={element}
-                        id={element.id}
-                        img={element.image}
-                        description={element.description}
-                        rem={propsFunction}
-                        showBtn={true}
-                        get={false}
-                    />
-                ))
-            } else {
-                setArr(arr.map(element => element.id === id
-                    ?
-                    <Item
-                        key={element.id}
-                        item={element}
-                        id={element.id}
-                        img={element.image}
-                        description={element.description}
-                        rem={propsFunction}
-                        showBtn={true}
-                        get={true}
-                    />
-                    :
-                    <Item
-                        key={element.id}
-                        item={element}
-                        id={element.id}
-                        img={element.image}
-                        description={element.description}
-                        rem={propsFunction}
-                        showBtn={true}
-                        get={false}
-                    />
-                )
-            )}
-            setOptions({
-                show: true,
-                description: currentItem.description,
-                image: currentItem.image,
-                id: id
-            });
-            setItem({
-                    quantity: 1,
-                    volume:'',
-                    netto:'',
-                    brutto:'',
-                    cost:''}
-            )
+const useSelected = () =>{
+    const selected = useSelector(state => state.selected)
+    return useMemo(() => {
+        let arr = [];
+        if (selected.length) {
+            selected.forEach(e => {
+                arr.push(e.id)
+            })
+            return itemsMass.filter(e => arr.indexOf(e.id) < 0)
+        } else {
+            return itemsMass
         }
+    }, [selected])
+}
 
-export {filteredItems, filteredAndChosen};
+const useFilteredItems = (text, id, setId) => {
+    function useFilteredMass(text) {
+        const arr = useSelected()
+        if (text) {
+            return arr.filter(e => e.description.toUpperCase().includes(text))
+        } else {
+            return arr
+        }
+    }
+    const useFilteredAndChosen = (id, setId) => {
+        return useFilteredMass(text).map((element)=>
+            element.id === id ?
+                <Item
+                    key={element.id}
+                    item={element}
+                    id={element.id}
+                    img={element.image}
+                    description={element.description}
+                    rem={setId}
+                    get={true}
+                />
+                :
+                <Item
+                    key={element.id}
+                    item={element}
+                    id={element.id}
+                    img={element.image}
+                    description={element.description}
+                    rem={setId}
+                    get={false}
+                />
+        )
+
+    }
+    return useFilteredAndChosen(id, setId)
+}
+export {useFilteredItems}
+

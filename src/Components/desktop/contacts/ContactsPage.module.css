@@ -1,0 +1,7 @@
+.container{
+    display: flex;
+}
+.btns{
+    display: flex;
+    margin-top: 12px;
+}

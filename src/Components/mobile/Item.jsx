@@ -1,14 +1,46 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import BlueButton from "./UI/button/BlueButton";
+import {css} from "@emotion/react";
 
-const ItemMobile = (props) => {
+const ItemMobile = ({item}) => {
     const history = useNavigate();
-    const path = '/item/'+props.id;
+    const path = '/item/' + item.id;
     return (
-        <div className={props.className}>
-            <img src={props.img} alt="item"/>
-            <p>{props.description}</p>
-            <button onClick={()=>history(path)}>Добавить</button>
+        <div css={css(`
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 5px;
+            background: #F8FAFF;
+        `)}>
+            <img css={css(`
+                    width: 70px;
+                    height: 50px;
+                  `)}
+                 src={item.image}
+                 alt="item"
+            />
+            <p css={css(`
+                width: 35%;
+                font-family: "Open Sans", serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 12px;
+                letter-spacing: .2px;
+                color: #606F7A;
+                text-align: center;
+            `)}>{item.description}</p>
+            <BlueButton
+                variant='mini'
+                onClick={() => history(path)}
+            >
+                Добавить
+            </BlueButton>
         </div>
     );
 };

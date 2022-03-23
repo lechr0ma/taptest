@@ -1,0 +1,16 @@
+.itemButtons {
+    width: 420px;
+    display: flex;
+}
+
+.totalCost {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.totalButtons {
+    margin-bottom: 100px;
+    position: relative;
+}
+

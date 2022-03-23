@@ -1,0 +1,38 @@
+
+@media screen and (min-width: 1200px){
+    .container{
+        display: none;
+    }
+}
+.road{
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 17px;
+    letter-spacing: .2px;
+    color: #606F7A;
+    width: 90%;
+    margin-top: 30px;
+}
+
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 50px;
+}
+.buttons div{
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: .2px;
+    color: #606F7A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

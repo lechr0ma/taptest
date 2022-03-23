@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    height: 97px;
+    width: 100%;
+    background: #F8FAFF;
+    border: 1px solid #E2E4EA;
+    box-sizing: border-box;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding-right: 20px;
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 17px;
+    letter-spacing: -1px;
+    color: #606F7A;
+}
+.container img{
+    border-radius: 10px;
+    height: 100%;
+}
