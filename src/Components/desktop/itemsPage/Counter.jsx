@@ -5,7 +5,7 @@ import {css} from "@emotion/react";
 import CounterButton from "../UI/button/CounterButton";
 
 const Counter = ({currentItem, setItem}) => {
-    const p = css(`
+    const pCss = css(`
             font-family: "Open Sans", sans-serif;
             font-style: normal;
             font-weight: 400;
@@ -14,10 +14,23 @@ const Counter = ({currentItem, setItem}) => {
             text-align: center;
             letter-spacing: 0.2px;
             color: #606F7A;`)
+    const divCss = css(`
+            font-family: "Open Sans", sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 17px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+            width: 53px;
+            height: 53px;
+            display: flex;
+            justify-content: center;
+            align-items: center;`)
 
     return (
-        <div className={classes.quantity}>
-            <p css={p}>Кол-во:</p>
+        <div className={classes.options__quantity}>
+            <p css={pCss}>Кол-во:</p>
             <div className={classes.quantity__counter}>
                 <CounterButton
                     onClick={() => {
@@ -27,8 +40,8 @@ const Counter = ({currentItem, setItem}) => {
                     }}>
                     &#8722;
                 </CounterButton>
-                <div>
-                    <p css={p}>{currentItem.quantity}</p>
+                <div css={divCss}>
+                    <p css={pCss}>{currentItem.quantity}</p>
                 </div>
                 <CounterButton
                     onClick={() => setItem({...currentItem, quantity: currentItem.quantity + 1})}

@@ -22,7 +22,7 @@ const ItemsList = ({setItem}) => {
         setText(text)
     }
     return (
-        <section className={classes.itemsList}>
+        <section className={classes.itemsList__container}>
             <P36>
                 Выберите мебель, которую нужно перевезти
             </P36>
@@ -44,9 +44,10 @@ const ItemsList = ({setItem}) => {
                 <OptionsInput
                     id='search'
                     onChange={(event) => {
-                    if (!event.target.value) {
-                        setText('')
-                    }}}
+                        if (!event.target.value) {
+                            setText('')
+                        }
+                    }}
                     placeholder='Введите название'
                     autoComplete='off'
                     variant='search'

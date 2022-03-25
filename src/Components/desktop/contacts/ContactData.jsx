@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './ContactData.module.css'
+import classes from './ContactsPage.module.css'
 import ig from '../../../img/ig.svg'
 import facebook from '../../../img/facebook.svg'
 import wechat from '../../../img/wechat.svg'

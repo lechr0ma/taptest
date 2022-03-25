@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import classes from './Item.module.css';
+import classes from './ItemsPage.module.css';
 import BlueButton from "../UI/button/BlueButton";
 import {css} from "@emotion/react";
 
@@ -8,8 +8,13 @@ import {css} from "@emotion/react";
 const Item = ({item, img, rem, description, get, id}) => {
 
     return (
-        <div className={classes.container}>
-            <img src={img} alt='image'/>
+        <div className={classes.item__container}>
+            <img css={css(`
+                    border-radius: 10px;
+                    height: 100%;`)}
+                 src={img}
+                 alt='image'
+            />
             <p css={css(`text-align: center`)}>{description}</p>
             {!get &&
             <BlueButton

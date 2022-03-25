@@ -1,10 +1,10 @@
-.title {
+.basket__title {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.table {
+.basket__table {
     position: relative;
     display: flex;
     flex-direction: column;

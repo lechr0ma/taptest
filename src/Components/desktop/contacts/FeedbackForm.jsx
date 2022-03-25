@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from './FeedbackForm.module.css';
+import classes from './ContactsPage.module.css';
 import {useNavigate} from 'react-router-dom';
 import larr from '../../../img/leftarr.svg'
 import OptionsInput from "../../all/OptionsInput";
@@ -28,7 +28,7 @@ const FeedbackForm = () => {
     }
 
     return (
-        <div className={classes.container}>
+        <div className={classes.feedBack__container}>
             <div className={classes.input__info}>
                 <OptionsInput
                     type="text"

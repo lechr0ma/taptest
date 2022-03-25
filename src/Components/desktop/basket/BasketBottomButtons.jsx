@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from "./Basket.module.css";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import GlobalHint from "../UI/GlobalHint";
@@ -13,14 +12,12 @@ const BasketBottomButtons = () => {
             <BlueButton
                 style={{width: 200, height: 55, marginLeft: 12}}
                 onClick={() => hist('/list')}
-                className={classes.blue__btn}
             >
                 Добавить
             </BlueButton>
             <BlueButton
                 style={{width: 200, height: 55, marginLeft: 12}}
                 onClick={() => hist('/load')}
-                className={classes.blue__btn}
             >
                 Рассчитать
             </BlueButton>

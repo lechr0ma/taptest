@@ -5,3 +5,73 @@
     display: flex;
     margin-top: 12px;
 }
+.contactData{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+.contacts{
+    display: flex;
+    flex-direction: column;
+    color: #606F7A;
+}
+
+.contacts__container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+}
+
+.social{
+    display: flex;
+    flex-direction: column;
+    color: #606F7A;
+}
+.social__container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.input__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.input__data {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-top: 43px;
+}
+
+.feedBack__container {
+    position: relative;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.err {
+    position: absolute;
+    top: 130px;
+    left: 5px;
+    color: #FF5D5D;
+}
+
+.back {
+    position: absolute;
+    bottom: -50px;
+    right: -150px;
+    border: 0;
+    margin-top: 50px;
+    background: inherit;
+    color: #5DAAFF;
+    align-self: flex-end;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 23px;
+    cursor: pointer;
+}

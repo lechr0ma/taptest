@@ -13,11 +13,11 @@ const Basket = ({title}) => {
     return (
         <section className='basket__container'>
             {title &&
-            <div className={classes.title}>
+            <div className={classes.basket__title}>
                 <P36>Добавленная мебель ({selected.length})</P36>
             </div>
             }
-            <div className={classes.table}>
+            <div className={classes.basket__table}>
                 {hints[3] &&
                 <GlobalHint
                     body='Чтобы отредактировать  введенные ланные, просто нажмите на поле'

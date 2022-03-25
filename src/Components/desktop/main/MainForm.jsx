@@ -7,7 +7,6 @@ import {css} from "@emotion/react";
 
 const MainForm = () => {
 
-
     return (
         <article className='main__form'>
             <div css={css({marginTop: 100})}>

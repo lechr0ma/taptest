@@ -12,7 +12,7 @@ const ItemsPage = () => {
     }
 
     return (
-        <article className='itemList__container'>
+        <article className='itemsPage__container'>
             <ItemsList setItem={setItem}/>
             <ItemOptions item={currentItem} isItem={isItem}/>
         </article>

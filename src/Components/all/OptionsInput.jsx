@@ -53,7 +53,7 @@ const OptionsInput = ({
     if (variant === 'options') {
         style = options
     }
-    if (variant === 'feedback'){
+    if (variant === 'feedback') {
         style = css(`
             width: calc(50% - 22px);
             height: 55px;

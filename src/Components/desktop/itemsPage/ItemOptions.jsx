@@ -53,13 +53,13 @@ const ItemOptions = ({item, isItem}) => {
     }
 
     return (
-        <section className={classes.itemOption}>
+        <section className={classes.options__container}>
             <P36>Затем заполните следующие поля выбранного элемента:</P36>
             {!isItem ?
-                <div className={classes.noItems}>Вы пока не выбрали ни одного элемента.</div>
+                <div className={classes.options__noItem}>Вы пока не выбрали ни одного элемента.</div>
                 :
-                <div className={classes.item__options}>
-                    <div className={classes.currentItem}>
+                <div className={classes.options__item}>
+                    <div className={classes.item__current}>
                         {hintShow[1] && <GlobalHint
                             body='Теперь заполните поля для этого элемента'
                             num={1}
@@ -119,7 +119,7 @@ const ItemOptions = ({item, isItem}) => {
                             height: 55,
                         }}/>
                     }
-                    <div className={classes.optionBtns}>
+                    <div className={classes.options__buttons}>
                         <BlueButton
                             onClick={resetItem}
                             style={{width: 210, height: 60, marginLeft: 12}}

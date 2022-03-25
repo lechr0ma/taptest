@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import classes from "./ContactData.module.css";
+import classes from "./ContactsPage.module.css";
 import P36 from "../UI/P/P36";
 import {css} from "@emotion/react";
 import D23Roboto from "../UI/D23Roboto";

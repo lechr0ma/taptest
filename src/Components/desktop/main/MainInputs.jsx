@@ -58,7 +58,8 @@ const MainInputs = () => {
                         left: 500,
                         width: 350,
                         height: 55
-                }}>
+                    }}
+                >
                     <p>Теперь нажмите кнопку "Далее"</p>
                     <img src={darr} alt="downarrow"/>
                 </Hint>
