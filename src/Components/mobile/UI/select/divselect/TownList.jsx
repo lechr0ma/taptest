@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../../../pages/mainStyle.module.css";
+import classes from "../../../pages/main/mainStyle.module.css";
 import Town from "./Town";
 
 const TownList = ({townsList, setTown}) => {

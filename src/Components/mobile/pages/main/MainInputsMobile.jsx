@@ -1,12 +1,11 @@
-/** @jsxImportSource @emotion/react */
 import React, {useState} from 'react';
-import classes from "./pages/mainStyle.module.css";
-import MainInputMobile from "./UI/input/MainInputMobile";
-import DivSelect from "./UI/select/divselect/DivSelect";
-import {chinaTowns, currencies, russiaTowns} from "../../logic/staticData";
+import classes from "./mainStyle.module.css";
+import MainInputMobile from "../../UI/input/MainInputMobile";
+import DivSelect from "../../UI/select/divselect/DivSelect";
+import {chinaTowns, currencies, russiaTowns} from "../../../../logic/staticData";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import BlueButton from "./UI/button/BlueButton";
+import BlueButton from "../../UI/button/BlueButton";
 
 
 const MainInputsMobile = () => {
@@ -36,7 +35,7 @@ const MainInputsMobile = () => {
     const [hint, setHint] = useState(false);
 
     return (
-        <div className={classes.input_container}>
+        <div className={classes.inputs__container}>
             <MainInputMobile
                 arr={chinaTowns}
                 setRoad={setRoad}
@@ -84,7 +83,7 @@ const MainInputsMobile = () => {
                     </BlueButton>
                 }
                 {hint &&
-                <p className={classes.hint}>
+                <p className={classes.button__hint}>
                     Введите корректное название города!
                 </p>
                 }

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import BlueButton from "./UI/button/BlueButton";
+import BlueButton from "../../UI/button/BlueButton";
 import {css} from "@emotion/react";
 
 const ItemMobile = ({item}) => {

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import classes from "../pages/BasketMobile.module.css";
+import classes from "../pages/basket/BasketMobile.module.css";
 import {useSelector} from "react-redux";
 import {css} from "@emotion/react";
 

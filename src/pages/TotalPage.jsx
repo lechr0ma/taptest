@@ -4,7 +4,7 @@ import Basket from "../Components/desktop/basket/Basket";
 import Total from "../Components/desktop/total/Total";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-import TotalMobile from "../Components/mobile/pages/TotalMobile";
+import TotalMobile from "../Components/mobile/pages/total/TotalMobile";
 
 const TotalPage = () => {
     const road = useSelector(state => state.road);

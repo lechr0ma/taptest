@@ -32,6 +32,7 @@ const MobileFieldset = ({item, onChange, legend, option}) => {
                 setSelect={onChange}
                 option={option}
                 title={legend}
+                type='number'
             />
         </fieldset>
     );

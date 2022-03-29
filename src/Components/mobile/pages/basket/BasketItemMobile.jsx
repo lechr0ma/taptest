@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import classes from './pages/BasketMobile.module.css'
+import classes from './BasketMobile.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import edit from '../../img/editMobile.svg';
-import del from '../../img/deleteMobile.svg';
+import edit from '../../../../img/editMobile.svg';
+import del from '../../../../img/deleteMobile.svg';
 import {Navigate, useNavigate} from "react-router-dom";
-import ItemOptions from "./UI/ItemOptions";
-import OptionsButton from "./UI/button/OptionsButton";
+import ItemOptions from "../../UI/ItemOptions";
+import OptionsButton from "../../UI/button/OptionsButton";
 import {css} from "@emotion/react";
 
 const BasketItemMobile = ({item}) => {

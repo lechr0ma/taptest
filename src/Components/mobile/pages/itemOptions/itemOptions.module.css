@@ -1,0 +1,14 @@
+.options__inputs {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.options__buttons {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}

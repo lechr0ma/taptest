@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import cl from "./Itemlist.module.css";
+import cl from "../itemOptions/itemOptions.module.css";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import MobileHeader from "../MobileHeader";
-import MobileEditField from "../MobileEditField";
-import ItemDescription from "../UI/ItemDescription";
-import BlueButton from "../UI/button/BlueButton";
+import MobileHeader from "../../header/MobileHeader";
+import MobileEditField from "./MobileEditField";
+import ItemDescription from "../../UI/ItemDescription";
+import BlueButton from "../../UI/button/BlueButton";
 
 const BasketItemEdit = () => {
     const road = useSelector(state => state.road);
@@ -47,7 +47,7 @@ const BasketItemEdit = () => {
                     edit={edit}
                     getValue={setEdit}
                 />
-                <div className={cl.item__buttons}>
+                <div className={cl.options__buttons}>
                     <BlueButton
                         onClick={() => hist(-1)}
                         variant='full'

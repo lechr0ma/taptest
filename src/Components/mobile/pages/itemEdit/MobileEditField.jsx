@@ -1,10 +1,10 @@
 import React from 'react';
-import cl from "./pages/Itemlist.module.css";
-import MobileFieldset from "./UI/fieldset/MobileFieldset";
+import cl from "../itemOptions/itemOptions.module.css";
+import MobileFieldset from "../../UI/fieldset/MobileFieldset";
 
 const MobileEditField = ({edit, getValue}) => {
     return (
-        <div className={cl.item__input}>
+        <div className={cl.options__inputs}>
             <MobileFieldset
                 item={edit}
                 onChange={getValue}

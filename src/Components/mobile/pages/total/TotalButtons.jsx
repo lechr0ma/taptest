@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import BlueButton from "./UI/button/BlueButton";
-import TrButton from "./UI/button/TrButton";
+import BlueButton from "../../UI/button/BlueButton";
+import TrButton from "../../UI/button/TrButton";
 import {css} from "@emotion/react";
 import {useNavigate} from "react-router-dom";
 

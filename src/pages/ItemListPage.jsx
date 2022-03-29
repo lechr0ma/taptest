@@ -3,7 +3,7 @@ import Header from "../Components/desktop/header/Header";
 import ItemsPage from "../Components/desktop/itemsPage/ItemsPage";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-import ItemListMobile from "../Components/mobile/pages/ItemListMobile";
+import ItemListMobile from "../Components/mobile/pages/list/ItemListMobile";
 
 const ItemListPage = () => {
     const road = useSelector(state => state.road);

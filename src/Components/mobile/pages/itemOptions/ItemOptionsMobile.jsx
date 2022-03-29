@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Navigate, useNavigate, useParams} from "react-router-dom";
-import {itemsMass} from "../../../logic/staticData";
-import cl from "./Itemlist.module.css";
+import {itemsMass} from "../../../../logic/staticData";
+import classes from "./itemOptions.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import MobileHeader from "../MobileHeader";
-import ItemDescription from "../UI/ItemDescription";
-import OptionInput from "../UI/input/OptionInput";
-import BlueButton from "../UI/button/BlueButton";
+import MobileHeader from "../../header/MobileHeader";
+import ItemDescription from "../../UI/ItemDescription";
+import OptionInput from "../../UI/input/OptionInput";
+import BlueButton from "../../UI/button/BlueButton";
 
 const ItemOptionsMobile = () => {
     const road = useSelector(state => state.road);
@@ -53,39 +53,44 @@ const ItemOptionsMobile = () => {
             <div className='mobile__options'>
                 <MobileHeader goback={true}/>
                 <ItemDescription item={item} variant='mobile'/>
-                <div className={cl.item__input}>
+                <div className={classes.options__inputs}>
                     <OptionInput
                         select={select}
                         setSelect={setSelect}
                         option='quantity'
                         title='Кол-во'
+                        type='number'
                     />
                     <OptionInput
                         select={select}
                         setSelect={setSelect}
                         option='volume'
                         title='Общий объем, м3'
+                        type='number'
                     />
                     <OptionInput
                         select={select}
                         setSelect={setSelect}
                         option='netto'
                         title='Масса Нетто, кг'
+                        type='number'
                     />
                     <OptionInput
                         select={select}
                         setSelect={setSelect}
                         option='brutto'
                         title='Масса Брутто, кг'
+                        type='number'
                     />
                     <OptionInput
                         select={select}
                         setSelect={setSelect}
                         option='cost'
                         title='Стоимость единицы'
+                        type='number'
                     />
                 </div>
-                <div className={cl.item__buttons}>
+                <div className={classes.options__buttons}>
                     <BlueButton
                         onClick={reset}
                         variant='full'
@@ -102,7 +107,7 @@ const ItemOptionsMobile = () => {
                         :
                         <BlueButton
                             disabled={true}
-                            onClick={submit}
+                            onClick={() => alert('Введите корректные значения')}
                             variant='full'
                         >
                             Заполните поля для добавления товара

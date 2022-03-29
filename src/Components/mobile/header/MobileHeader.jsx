@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
-import classes from "./pages/mainStyle.module.css";
-import img from "../../img/logo.png";
-import menu from "../../img/Menu.svg";
+import classes from "./mobileHeader.module.css";
+import img from "../../../img/logo.png";
+import menu from "../../../img/Menu.svg";
 import LeftMenu from "./LeftMenu";
-import back from "../../img/Back.svg";
-import cl from "./pages/Itemlist.module.css";
+import back from "../../../img/Back.svg";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import ImageButton from "./UI/button/ImageButton";
-
+import ImageButton from "../UI/button/ImageButton";
 
 
 const MobileHeader = (props) => {
@@ -38,12 +36,12 @@ const MobileHeader = (props) => {
             <input
                 placeholder='Поиск....'
                 onChange={event => props.filter(event.target.value)}
-                className={cl.search}
+                className={classes.header__search}
                 type="text"
             />
             }
             {props.road && <button
-                className={classes.road}
+                className={classes.header__road}
                 onClick={() => hist('/')}
             >
                 <p>{road.from}&larr;{road.to}, {road.money}</p>

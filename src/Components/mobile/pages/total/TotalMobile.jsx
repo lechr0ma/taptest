@@ -2,10 +2,10 @@ import React from 'react';
 import classes from './TotalMobile.module.css'
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-import MobileHeader from "../MobileHeader";
+import MobileHeader from "../../header/MobileHeader";
 import TotalOptions from "./TotalOptions";
-import TotalFees from "../TotalFees";
-import TotalButtons from "../TotalButtons";
+import TotalFees from "./TotalFees";
+import TotalButtons from "./TotalButtons";
 
 
 const TotalMobile = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './mainStyle.module.css'
-import MobileHeader from "../MobileHeader";
-import MainInputsMobile from "../MainInputsMobile";
+import MobileHeader from "../../header/MobileHeader";
+import MainInputsMobile from "./MainInputsMobile";
 
 
 const MainMobile = () => {
@@ -11,7 +11,7 @@ const MainMobile = () => {
     return (
         <div className='mobile__main'>
             <MobileHeader logo={true}/>
-            <div className={classes.mainText}>Рассчитайте стоимость доставки из Китая</div>
+            <div className={classes.main__title}>Рассчитайте стоимость доставки из Китая</div>
             <MainInputsMobile/>
         </div>
     );

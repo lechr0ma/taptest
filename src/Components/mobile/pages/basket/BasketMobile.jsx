@@ -2,10 +2,10 @@ import React from 'react';
 import {Navigate, useNavigate} from "react-router-dom";
 import classes from './BasketMobile.module.css';
 import {useSelector} from "react-redux";
-import BasketItemMobile from "../BasketItemMobile";
-import MobileHeader from "../MobileHeader";
-import BlueButton from "../UI/button/BlueButton";
-import NoItem from "../UI/NoItem";
+import BasketItemMobile from "./BasketItemMobile";
+import MobileHeader from "../../header/MobileHeader";
+import BlueButton from "../../UI/button/BlueButton";
+import NoItem from "../../UI/NoItem";
 
 const BasketMobile = () => {
     const road = useSelector(state => state.road);
@@ -24,7 +24,7 @@ const BasketMobile = () => {
                 </div>
                 }
                 {selected.length > 0 ?
-                    <div className={classes.itemsList}>
+                    <div className={classes.basket__itemsList}>
                         {selected.map(element =>
                             <BasketItemMobile
                                 key={element.key}

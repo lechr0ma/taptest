@@ -1,8 +1,6 @@
-.container {
-    display: none;
-}
 
-.header {
+
+.feedback__header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -11,7 +9,7 @@
     margin-bottom: 30px;
 }
 
-.title {
+.feedback__title {
     width: 90%;
     display: flex;
     font-family: "Open Sans", serif;
@@ -23,11 +21,11 @@
     color: #606F7A;
 }
 
-.ask {
+.feedback__ask {
     width: 90%;
 }
 
-.submit {
+.feedback__submit {
     width: 90%;
     font-family: "Open Sans", serif;
     font-style: normal;
@@ -43,7 +41,7 @@
     text-decoration: none;
 }
 
-.body {
+.sended__body {
     margin-top: 100px;
     height: calc(100vh - 170px);
     display: flex;

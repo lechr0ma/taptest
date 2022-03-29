@@ -3,7 +3,7 @@ import Header from "../Components/desktop/header/Header";
 import classes from "../Components/desktop/contacts/ContactsPage.module.css";
 import ContactData from "../Components/desktop/contacts/ContactData";
 import FeedbackForm from "../Components/desktop/contacts/FeedbackForm";
-import FeedbackFormMobile from "../Components/mobile/FeedbackFormMobile";
+import FeedbackFormMobile from "../Components/mobile/pages/feedback/FeedbackFormMobile";
 import P64 from "../Components/desktop/UI/P/P64";
 
 const ContactsPage = () => {

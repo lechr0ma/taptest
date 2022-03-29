@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from "../../../pages/mainStyle.module.css";
+import classes from "../../../pages/main/mainStyle.module.css";
 import TownList from "./TownList";
 
 const DivSelect = ({arr, title, option, road, setRoad, disabled}) => {

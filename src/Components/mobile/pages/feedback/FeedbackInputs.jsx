@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import OptionInput from "./UI/input/OptionInput";
+import OptionInput from "../../UI/input/OptionInput";
 import {css} from "@emotion/react";
 
 const FeedbackInputs = ({inputs, setInputs, hint}) => {

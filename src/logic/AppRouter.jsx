@@ -7,8 +7,8 @@ import BasketPage from "../pages/BasketPage";
 import ItemListPage from "../pages/ItemListPage";
 import LoadPage from "../pages/LoadPage";
 import TotalPage from "../pages/TotalPage";
-import ItemOptionsMobile from "../Components/mobile/pages/ItemOptionsMobile";
-import BasketItemEdit from "../Components/mobile/pages/BasketItemEdit";
+import ItemOptionsMobile from "../Components/mobile/pages/itemOptions/ItemOptionsMobile";
+import BasketItemEdit from "../Components/mobile/pages/itemEdit/BasketItemEdit";
 
 const AppRouter = () => {
     return (

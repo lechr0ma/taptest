@@ -4,7 +4,7 @@ import Basket from "../Components/desktop/basket/Basket";
 import BasketBottomButtons from "../Components/desktop/basket/BasketBottomButtons";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-import BasketMobile from "../Components/mobile/pages/BasketMobile";
+import BasketMobile from "../Components/mobile/pages/basket/BasketMobile";
 
 const BasketPage = () => {
     const road = useSelector(state => state.road);
